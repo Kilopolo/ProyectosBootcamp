@@ -1,6 +1,6 @@
 # SpockGameReact
 Las reglas son muy sencillas, según **Sheldon**:
- * Tijeras cortan el papel
+ * Tijeras cortan el papel 
  * Papel envuelve la piedra
  * Piedra aplasta al lagarto
  * Lagarto envenena a Spock
