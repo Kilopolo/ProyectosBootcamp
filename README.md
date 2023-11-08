@@ -10,5 +10,8 @@ Las reglas son muy sencillas, según **Sheldon**:
  * Papel desaprueba a Spock
  * Spock desintegra la piedra 
  * Piedra aplasta las tijeras
+ 
+   ![piedra-papel-tijera-lagarto-spock](https://github.com/Kilopolo/SpockGameReact/assets/118187535/1121a5fb-b266-47c3-a7ec-bb70d3c76ad3)
+
 
 ¡Que gane el mejor!
