@@ -2,13 +2,13 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MenuScreen from "./modules/MenuScreen";
 import CalculatorScreen from "./modules/CalculatorScreen";
 import GameScreen from "./modules/GameScreen";
 import CreditAppScreen from "./modules/CreditAppScreen";
 import IMCPatri from "./modules/IMCPatri";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 // const Stack = createNativeStackNavigator();
 const Stack = createStackNavigator();
@@ -17,7 +17,7 @@ const App = () => {
 
   return (
 
-      <NavigationContainer ref={ref}>
+      <NavigationContainer>
         <Stack.Navigator initialRouteName="Menu">
           <Stack.Screen name="Menu" component={MenuScreen} />
           <Stack.Screen name="Calculator" component={CalculatorScreen} />
