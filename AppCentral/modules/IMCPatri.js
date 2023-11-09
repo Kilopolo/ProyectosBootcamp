@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet, Image, ImageBackground} from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, Image, ImageBackground } from "react-native";
 import bajo from "../assets/bajo.png";
 import sobrepeso from "../assets/sobrepeso.png";
 import obesidad from "../assets/obesidad.png";
