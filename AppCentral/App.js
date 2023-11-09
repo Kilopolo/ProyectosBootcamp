@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View, Slider, Button } from 'react-native';
+import { Text, View,  Button } from 'react-native';
+import Slider from '@react-native-community/slider';
 
 const CreditSimulator = () => {
   const [montoTotal, setMontoTotal] = useState(5000);
