@@ -1,5 +1,6 @@
 import { TouchableOpacity } from "react-native";
 import { Svg, Circle, Rect } from "react-native-svg";
+import { StyleSheet } from "react-native";
 
 const CloudButton = ({ onPress }) => {
   return (
@@ -13,4 +14,12 @@ const CloudButton = ({ onPress }) => {
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    alignItems: "center",
+  },
+});
+
+
 export default CloudButton;
