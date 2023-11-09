@@ -1,23 +1,25 @@
 import React from "react";
 
-import { createNativeStackNavigator  } from "@react-navigation/native-stack";
 
-import CalculatorScreen from "./CalculatorScreen";
-import GameScreen from "./GameScreen";
-import CreditAppScreen from "./CreditAppScreen";
-import IMCPatri from "./IMCPatri";
 
-const Stack = createNativeStackNavigator();
-{/* <Stack.Navigator initialRouteName="Menu"> */}
-{/* <Stack.Screen name="Menu" component={MenuScreen} /> */}
-const MenuScreen = () => {
+const MenuScreen = ({ navigation }) => {
   return (
-    <Stack.Navigator  initialRouteName="CreditApp">
-      <Stack.Screen name="Calculator" component={CalculatorScreen} />
-      <Stack.Screen name="IMCPatri" component={IMCPatri} />
-      <Stack.Screen name="Game" component={GameScreen} />
-      <Stack.Screen name="CreditApp" component={CreditAppScreen} />
-    </Stack.Navigator>
+    <ScrollView style={{ flex: 1 }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Calculator</Text>
+        <Button
+          title="Regresar a Calculator"
+          onPress={() => navigation.navigate("Calculator")}
+        />
+      </View>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>IMCPatri</Text>
+        <Button
+          title="Ir a IMCPatri"
+          onPress={() => navigation.navigate("IMCPatri")}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
