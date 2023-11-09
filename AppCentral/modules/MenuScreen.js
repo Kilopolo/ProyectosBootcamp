@@ -5,6 +5,7 @@ import MenuScreen from "./MenuScreen";
 import CalculatorScreen from "./CalculatorScreen";
 import GameScreen from "./GameScreen";
 import CreditAppScreen from "./CreditAppScreen";
+import IMCPatri from "./IMCPatri";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ const App = () => {
       <Stack.Navigator initialRouteName="Menu">
         <Stack.Screen name="Menu" component={MenuScreen} />
         <Stack.Screen name="Calculator" component={CalculatorScreen} />
+        <Stack.Screen name="IMCPatri" component={IMCPatri} />
         <Stack.Screen name="Game" component={GameScreen} />
         <Stack.Screen name="CreditApp" component={CreditAppScreen} />
       </Stack.Navigator>
