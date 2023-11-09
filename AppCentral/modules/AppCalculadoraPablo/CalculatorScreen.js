@@ -81,7 +81,7 @@ const CalculatorScreen = () => {
                   keyboardType="numeric"
                 />
                 {/* <Button title="Calcular IMC" onPress={calcularIMC} /> */}
-                <CloudButton onPress={calcularIMC} />
+                <CloudButton onPress={calcularIMC} text={"Calcular"}/>
               </View>
               {imc !== null && (
                 <View style={styles.resultContainer}>
