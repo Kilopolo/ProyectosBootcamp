@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 //locales
 import MenuScreen from "./modules/MenuScreen";
@@ -28,12 +28,37 @@ const App = () => {
           headerTitleAlign: "center",
         }}
       >
-        <Stack.Screen name="Menu" component={MenuScreen} options={{title:'Menu Principal'}} />
-        <Stack.Screen name="Calculator" component={CalculatorScreen} options={{title:'Calculadora Pablo'}}/>
-        <Stack.Screen name="IMCPatri" component={IMCPatri} options={{title:'Calculadora Patri'}} />
-        <Stack.Screen name="IMCDavid" component={IMCDavid} options={{title:'Calculadora David'}} />
-        <Stack.Screen name="Game" component={GameScreen} options={{title:'Juego Spock'}} />
-        <Stack.Screen name="CreditApp" component={CreditAppScreen} options={{title:'Calculadora de Credito'}} />
+        <Stack.Screen
+          name="Menu"
+          component={MenuScreen}
+          options={{ title: "Menu Principal" }}
+        />
+        <Stack.Screen
+          name="Calculator"
+          component={CalculatorScreen}
+          options={{ title: "Calculadora Pablo" }}
+        />
+        <Stack.Screen
+          name="IMCPatri"
+          component={IMCPatri}
+          options={{ title: "Calculadora Patri" }}
+        />
+        <Stack.Screen
+          name="IMCDavid"
+          component={IMCDavid}
+          options={{ title: "Calculadora David" }}
+        />
+        <Stack.Screen
+          name="Game"
+          component={GameScreen}
+          options={{ title: "Juego Spock" }}
+        />
+        <Stack.Screen
+          name="CreditApp"
+          component={CreditAppScreen}
+          options={{ title: "Calculadora de Credito" }}
+        />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

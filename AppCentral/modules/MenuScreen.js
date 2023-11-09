@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { ScrollView, View, Text, Button , TouchableWithoutFeedback,Animated} from "react-native";
+import { ScrollView, View, Text, Button , TouchableWithoutFeedback,Animated,} from "react-native";
 import { StyleSheet } from "react-native";
  
 const MenuScreen = ({ navigation }) => {
@@ -61,6 +61,10 @@ const MenuScreen = ({ navigation }) => {
     </ScrollView>
   );
 };
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -100,7 +104,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#544E4D",
     fontWeight: "bold",
-  },
+  }, 
 });
  
 export default MenuScreen;
