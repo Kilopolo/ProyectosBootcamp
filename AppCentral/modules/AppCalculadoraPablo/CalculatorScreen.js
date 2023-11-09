@@ -15,6 +15,7 @@ const CalculatorScreen = () => {
   const [imc, setIMC] = useState(null);
   const [mensaje, setMensaje] = useState("");
   const [mostrarFelicitacion, setMostrarFelicitacion] = useState("");
+  const [colorPeso, setColorPeso] = useState("rgba(30,30,30,1)");
 
   // Función para obtener la imagen de felicitación según el mensaje
   const obtenerImagenFelicitacion = (mensaje) => {
@@ -40,15 +41,19 @@ const CalculatorScreen = () => {
       if (imcCalculado < 18.5) {
         setMensaje("Delgado");
         setMostrarFelicitacion("Delgado");
+        setColorPeso("rgba(130,130,200,0.9)");
       } else if (imcCalculado >= 18.5 && imcCalculado < 25) {
         setMensaje("Normal");
         setMostrarFelicitacion("Normal");
+        setColorPeso("rgba(00,150,00,0.9)");
       } else if (imcCalculado >= 25 && imcCalculado < 30) {
         setMensaje("Gordo");
         setMostrarFelicitacion("Gordo");
+        setColorPeso("rgba(200,200,0,0.9)");
       } else {
         setMensaje("Obeso");
         setMostrarFelicitacion("Obeso");
+        setColorPeso("rgba(150,0,0,0.9)");
       }
     } else {
       setIMC(null);

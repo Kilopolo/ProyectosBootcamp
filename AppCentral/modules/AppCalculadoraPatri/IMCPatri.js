@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, Image, ImageBackground } from "react-native";
-import bajo from "../assets/bajo.png";
-import sobrepeso from "../assets/sobrepeso.png";
-import obesidad from "../assets/obesidad.png";
-import normopeso from "../assets/normopeso.png";
+import bajo from "../../assets/bajo.png";
+import sobrepeso from "../../assets/sobrepeso.png";
+import obesidad from "../../assets/obesidad.png";
+import normopeso from "../../assets/normopeso.png";
+import styles from "./StyleIMCPatri";
+
 const IMCPatri = () => {
   const [peso, setPeso] = useState("");
   const [altura, setAltura] = useState("");
@@ -75,50 +77,5 @@ const IMCPatri = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: "contain",
-    width: "100%",
-    height: "100%",
-  },
-  content: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 10,
-  },
-
-  input: {
-    width: 250,
-    height: 50,
-    borderColor: "black",
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-  },
-  result: {
-    fontSize: 18,
-    marginTop: 10,
-  },
-  message: {
-    fontSize: 20,
-    marginTop: 10,
-    textAlign: "center",
-  },
-  image: {
-    width: 120,
-    height: 120,
-    marginTop: 10,
-  },
-});
 
 export default IMCPatri;
