@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { useFonts } from 'expo-font';
 
 const HeaderComponent = () => {
-    const [loaded] = useFonts({
-      'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
-    });
-  
-    const [imageToShow, setImageToShow] = useState(require('./fitness.png')); // Imagen que se mostrará todo el tiempo
-  
-    if (!loaded) {
-      return null;
-    }
+    
+    const [imageToShow, setImageToShow] = useState(require('../../assets/fitness.png')); // Imagen que se mostrará todo el tiempo
   
     return (
       <View style={styles.header}>
@@ -31,7 +23,6 @@ const styles = StyleSheet.create({
     marginTop: 25,
     color: 'black',
     textAlign: 'center',
-    fontFamily: 'Roboto-Regular',
     alignItems: 'center',
   },
   star: {
