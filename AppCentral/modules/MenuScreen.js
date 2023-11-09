@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { ScrollView, View, Text, Button , TouchableWithoutFeedback,Animated,} from "react-native";
+import { ScrollView, View, Text, Button , TouchableWithoutFeedback,Animated} from "react-native";
 import { StyleSheet } from "react-native";
  
 const MenuScreen = ({ navigation }) => {

@@ -8,8 +8,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 //locales
 import MenuScreen from "./modules/MenuScreen";
 import CalculatorScreen from "./modules/AppCalculadoraPablo/CalculatorScreen";
-import GameScreen from "./modules/GameScreen";
-import CreditAppScreen from "./modules/CreditAppScreen";
+import GameScreen from "./modules/AppGameSpock/GameScreen";
+import CreditAppScreen from "./modules/AppCredit/CreditAppScreen";
 import IMCPatri from "./modules/IMCPatri";
 import IMCDavid from "./modules/AppCalculadoraDavid/IMCDavid";
 
