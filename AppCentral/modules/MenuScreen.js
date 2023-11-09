@@ -13,17 +13,24 @@ const MenuScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <Text style={styles.textButton}>Calculator</Text>
+        <Text style={styles.textButton}>IMC Pablo</Text>
         <Button
-          title="Calculator"
+          title="IMC Pablo"
           onPress={() => navigation.navigate("Calculator")}
         />
       </View>
       <View style={styles.buttonContainer}>
-        <Text style={styles.textButton}>IMCPatri</Text>
+        <Text style={styles.textButton}>IMC Patri</Text>
         <Button
-          title="IMCPatri"
+          title="IMC Patri"
           onPress={() => navigation.navigate("IMCPatri")}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.textButton}>IMC David</Text>
+        <Button
+          title="IMC David"
+          onPress={() => navigation.navigate("IMCDavid")}
         />
       </View>
       <View style={styles.buttonContainer}>
@@ -61,6 +68,7 @@ const styles = StyleSheet.create({
   },
   textButton: {
     fontSize: 20,
+    marginBottom : 10,
     textAlign: "center",
     color: "#544E4D",
     fontWeight: "bold",
