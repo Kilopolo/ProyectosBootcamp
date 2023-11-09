@@ -6,7 +6,10 @@ import { useState } from "react";
 
 const CloudButton = ({ onPress, text, color }) => {
   const bgc = color? color : "rgba(30,30,30,1)";
+  var complement = 0xffffff ^ color;
   const [backgroundColor,setBackgroundColor] = useState(bgc);
+
+
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
       <View style={styles.buttonContainer}>
