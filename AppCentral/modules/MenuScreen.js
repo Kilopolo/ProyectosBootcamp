@@ -1,26 +1,24 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import MenuScreen from "./MenuScreen";
+
+import { createNativeStackNavigator  } from "@react-navigation/native-stack";
+
 import CalculatorScreen from "./CalculatorScreen";
 import GameScreen from "./GameScreen";
 import CreditAppScreen from "./CreditAppScreen";
 import IMCPatri from "./IMCPatri";
 
-const Stack = createStackNavigator();
-
-const App = () => {
+const Stack = createNativeStackNavigator();
+{/* <Stack.Navigator initialRouteName="Menu"> */}
+{/* <Stack.Screen name="Menu" component={MenuScreen} /> */}
+const MenuScreen = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Menu">
-        <Stack.Screen name="Menu" component={MenuScreen} />
-        <Stack.Screen name="Calculator" component={CalculatorScreen} />
-        <Stack.Screen name="IMCPatri" component={IMCPatri} />
-        <Stack.Screen name="Game" component={GameScreen} />
-        <Stack.Screen name="CreditApp" component={CreditAppScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator  initialRouteName="CreditApp">
+      <Stack.Screen name="Calculator" component={CalculatorScreen} />
+      <Stack.Screen name="IMCPatri" component={IMCPatri} />
+      <Stack.Screen name="Game" component={GameScreen} />
+      <Stack.Screen name="CreditApp" component={CreditAppScreen} />
+    </Stack.Navigator>
   );
 };
 
-export default App;
+export default MenuScreen;
