@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //locales
 import MenuScreen from "./modules/MenuScreen";
-import CalculatorScreen from "./modules/CalculatorScreen";
+import CalculatorScreen from "./modules/AppCalculadoraPablo/CalculatorScreen";
 import GameScreen from "./modules/GameScreen";
 import CreditAppScreen from "./modules/CreditAppScreen";
 import IMCPatri from "./modules/IMCPatri";
