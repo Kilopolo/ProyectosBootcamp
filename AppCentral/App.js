@@ -16,7 +16,6 @@ const Stack = createStackNavigator();
 const App = () => {
 
   return (
-
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Menu">
           <Stack.Screen name="Menu" component={MenuScreen} />

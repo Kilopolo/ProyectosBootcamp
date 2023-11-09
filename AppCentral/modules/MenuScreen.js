@@ -1,26 +1,70 @@
 import React from "react";
 import { ScrollView, View, Text, Button } from "react-native";
-
+import { StyleSheet } from "react-native";
 
 const MenuScreen = ({ navigation }) => {
   return (
-    <ScrollView style={{ flex: 1 }}>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Calculator</Text>
+    <ScrollView >
+      <View style={styles.buttonContainer}>
+        <Text style={styles.textButton}>Menu</Text>
         <Button
-          title="Regresar a Calculator"
+          title="Menu"
+          onPress={() => navigation.navigate("Menu")}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.textButton}>Calculator</Text>
+        <Button
+          title="Calculator"
           onPress={() => navigation.navigate("Calculator")}
         />
       </View>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>IMCPatri</Text>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.textButton}>IMCPatri</Text>
         <Button
-          title="Ir a IMCPatri"
+          title="IMCPatri"
           onPress={() => navigation.navigate("IMCPatri")}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.textButton}>Game</Text>
+        <Button
+          title="Game"
+          onPress={() => navigation.navigate("Game")}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.textButton}>CreditApp</Text>
+        <Button
+          title="CreditApp"
+          onPress={() => navigation.navigate("CreditApp")}
         />
       </View>
     </ScrollView>
   );
 };
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "grey",
+    borderRadius: 5,
+    padding: 10,
+    margin: 10,
+  },
+  textButton: {
+    fontSize: 20,
+    textAlign: "center",
+    color: "#544E4D",
+    fontWeight: "bold",
+  },
+});
 
 export default MenuScreen;
