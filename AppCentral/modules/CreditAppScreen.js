@@ -111,6 +111,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginBottom:10,
     borderRadius:10,
+    borderWidth: 1,
+    borderColor: "grey",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -146,8 +148,6 @@ const styles = StyleSheet.create({
     textAlign: "right",
     fontWeight: "bold",
     fontSize: 22,
-  
-   
   },
 
   titleresult: {
