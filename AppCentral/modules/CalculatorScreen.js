@@ -24,13 +24,13 @@ const CalculatorScreen = () => {
   const obtenerImagenFelicitacion = (mensaje) => {
     let imagen = "";
     if (mensaje === "Delgado") {
-      imagen = require("./felicitacion_delgado.png");
+      imagen = require("../assets/felicitacion_delgado.png");
     } else if (mensaje === "Normal") {
-      imagen = require("./felicitacion_normal.png");
+      imagen = require("../assets/felicitacion_normal.png");
     } else if (mensaje === "Gordo") {
-      imagen = require("./felicitacion_gordo.png");
+      imagen = require("../assets/felicitacion_gordo.png");
     } else if (mensaje === "Obeso") {
-      imagen = require("./felicitacion_obeso.png");
+      imagen = require("../assets/felicitacion_obeso.png");
     }
     return imagen;
   };
@@ -76,7 +76,7 @@ const CalculatorScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <ImageBackground
-        source={require("./BKG.jpg")}
+        source={require("../assets/BKG.jpg")}
         style={styles.backgroundImage}
       >
         <View style={styles.blurContainer}>
