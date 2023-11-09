@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
@@ -19,8 +19,10 @@ const styles = StyleSheet.create({
     color: "white",
   },
   input: {
-    width: 200,
+    // width: 200,
     height: 40,
+    alignContent: "center",
+    textAlign: "center",
     borderWidth: 1,
     borderColor: "gray",
     borderRadius: 10,
@@ -32,10 +34,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   resultContainer: {
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
-    padding: 20,
+    backgroundColor: "rgba(255, 255, 255, 0.5)",
+    padding: 10,
     borderRadius: 10,
-    margin: 20,
+    marginTop: 5,
   },
   resultText: {
     fontSize: 24,
@@ -46,8 +48,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   felicitacionImage: {
-    width: 200,
-    height: 200,
+    width: 100,
+    height: 100,
     resizeMode: "contain",
   },
   titulo: {
@@ -84,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+

@@ -3,6 +3,11 @@ import {View,Text,TextInput,ImageBackground,ScrollView,Image} from "react-native
 
 import CloudButton from "../fragments/ButtonCloud";
 import styles from "./StyleIMCPablo";
+import Delgado from "../../assets/felicitacion_delgado.png";
+import Normal from "../../assets/felicitacion_normal.png";
+import Gordo from "../../assets/felicitacion_gordo.png";
+import Obeso from "../../assets/felicitacion_obeso.png";
+import BKG from "../../assets/BKG.jpg";
 
 const CalculatorScreen = () => {
   const [altura, setAltura] = useState("");
@@ -15,13 +20,13 @@ const CalculatorScreen = () => {
   const obtenerImagenFelicitacion = (mensaje) => {
     let imagen = "";
     if (mensaje === "Delgado") {
-      imagen = require("../../assets/felicitacion_delgado.png");
+      imagen = Delgado;
     } else if (mensaje === "Normal") {
-      imagen = require("../../assets/felicitacion_normal.png");
+      imagen = Normal;
     } else if (mensaje === "Gordo") {
-      imagen = require("../../assets/felicitacion_gordo.png");
+      imagen = Gordo;
     } else if (mensaje === "Obeso") {
-      imagen = require("../../assets/felicitacion_obeso.png");
+      imagen = Obeso;
     }
     return imagen;
   };
@@ -55,7 +60,7 @@ const CalculatorScreen = () => {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.container}>
         <ImageBackground
-          source={require("../../assets/BKG.jpg")}
+          source={BKG}
           style={styles.backgroundImage}
         >
           <View style={styles.blurContainer}>
@@ -76,7 +81,7 @@ const CalculatorScreen = () => {
                   keyboardType="numeric"
                 />
                 {/* <Button title="Calcular IMC" onPress={calcularIMC} /> */}
-                <CloudButton onPress={calcularIMC} />
+                <CloudButton onPress={calcularIMC} text={"CALCULAR"}/>
               </View>
               {imc !== null && (
                 <View style={styles.resultContainer}>
