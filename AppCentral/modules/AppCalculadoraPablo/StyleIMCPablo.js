@@ -19,8 +19,10 @@ export default StyleSheet.create({
     color: "white",
   },
   input: {
-    width: 200,
+    // width: 200,
     height: 40,
+    alignContent: "center",
+    textAlign: "center",
     borderWidth: 1,
     borderColor: "gray",
     borderRadius: 10,

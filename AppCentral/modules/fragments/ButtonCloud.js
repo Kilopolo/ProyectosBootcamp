@@ -5,7 +5,7 @@ import { Text,View } from "react-native";
 import { useState } from "react";
 
 const CloudButton = ({ onPress, text, color }) => {
-  const bgc = color? color : "rgba(0,0,0,0.5)";
+  const bgc = color? color : "rgba(30,30,30,0.15)";
   const [backgroundColor,setBackgroundColor] = useState(bgc);
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
@@ -29,13 +29,18 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: "center",
     justifyContent: "center",
-    width: 150,
+    flexDirection: "row",
+
+    width: 250,
     // height: 60,
     borderRadius: 30,
     backgroundColor: "rgba(255,255,255,0.3)",
   },
   buttonText: {
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    marginHorizontal: 10,
+    textAlign: "center",
     color: "rgba(255,255,255,0.9)",
     fontSize: 20,
     fontWeight: "bold",
