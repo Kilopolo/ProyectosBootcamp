@@ -110,7 +110,16 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: "white",
     marginBottom:10,
-    borderRadius:10
+    borderRadius:10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+
+    elevation: 24,
   },
   slider: {
     width: "100%",
@@ -129,6 +138,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     margin: 9,
     textDecorationLine: "underline",
+    
 
   },
   textslider1: {
@@ -161,6 +171,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#2886FF",
     padding: 10,
     borderRadius: 7,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+
+    elevation: 24,
   },
   btontext: {
     fontWeight: "bold",
@@ -169,6 +188,7 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     borderColor: "black",
+    
   },
 });
 
