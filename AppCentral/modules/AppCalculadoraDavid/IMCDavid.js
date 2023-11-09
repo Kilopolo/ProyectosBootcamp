@@ -6,7 +6,7 @@ import IMCCalculator from './IMCCalculator';
 const App = () => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./imagen1.jpg')} style={styles.container}>
+      <ImageBackground source={require('../assets/imagen1.jpg')} style={styles.container}>
       <HeaderComponent />
       <IMCCalculator />
       </ImageBackground>
