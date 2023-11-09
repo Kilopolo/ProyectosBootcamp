@@ -5,7 +5,7 @@ import { Text,View } from "react-native";
 import { useState } from "react";
 
 const CloudButton = ({ onPress, text, color }) => {
-  const bgc = color? color : "rgba(30,30,30,0.15)";
+  const bgc = color? color : "rgba(30,30,30,1)";
   const [backgroundColor,setBackgroundColor] = useState(bgc);
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
