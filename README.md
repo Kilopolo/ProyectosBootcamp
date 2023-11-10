@@ -24,7 +24,7 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 
 ## Contacto
 
-Si tienes alguna pregunta o sugerencia, por favor contáctanos en [pablo23dr@gmail.com](mailto:pablo23dr@gmail.com) , [patri120793@gmail.com](mailto:patri120793@gmail.com)o crea un nuevo problema en este repositorio.
+Si tienes alguna pregunta o sugerencia, por favor contáctanos en [pablo23dr@gmail.com](mailto:pablo23dr@gmail.com), [patri120793@gmail.com](mailto:patri120793@gmail.com) o crea un nuevo problema en este repositorio.
 
 ¡Gracias por tu interés en la Biblioteca Bootcamp-Spring-Biblioteca!
 
