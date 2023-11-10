@@ -11,10 +11,21 @@ Para obtener más detalles sobre cada proyecto, consulta la [Wiki del Repositori
 - Proyecto 2: [Nombre del Proyecto 2](https://github.com/Kilopolo/ProyectosBootcamp/wiki/Proyecto-2)
 - Proyecto 3: [Nombre del Proyecto 3](https://github.com/Kilopolo/ProyectosBootcamp/wiki/Proyecto-3)
 
-## Contribución
+## Contribuir
 
-Si deseas contribuir a alguno de los proyectos, consulta la wiki del proyecto correspondiente para obtener más información sobre cómo participar.
+Si te gustaría contribuir al desarrollo de la Biblioteca Bootcamp-Spring-Biblioteca, por favor consulta nuestra [Guía de Contribución](CONTRIBUTING.md) para obtener más información sobre cómo empezar. Apreciamos todas las contribuciones para hacer que la aplicación sea más sólida y confiable.
 
 ## Licencia
 
-Este repositorio está bajo la Licencia [MIT](LICENSE).
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Contacto
+
+Si tienes alguna pregunta o sugerencia, por favor contáctanos en [pablo.diaz-rubio@capgemini.com](mailto:pablo.diaz-rubio@capgemini.com) o crea un nuevo problema en este repositorio.
+
+¡Gracias por tu interés en la Biblioteca Bootcamp-Spring-Biblioteca!
+
+## Colaboradores
+ - Pablo Díaz Rubio
+ - Patricia Fernández Sánchez
+ - David Santos Miguélez
