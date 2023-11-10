@@ -7,13 +7,13 @@ Para obtener más detalles sobre cada proyecto, consulta la [Wiki del Repositori
 
 ## Lista de Proyectos
 
-- Proyecto 1: [Nombre del Proyecto 1](https://github.com/Kilopolo/ProyectosBootcamp/wiki/Proyecto-1)
+- Proyecto 1: [Bootcamp‐Spring‐Biblioteca](https://github.com/Kilopolo/ProyectosBootcamp/wiki/Bootcamp%E2%80%90Spring%E2%80%90Biblioteca)
 - Proyecto 2: [Nombre del Proyecto 2](https://github.com/Kilopolo/ProyectosBootcamp/wiki/Proyecto-2)
 - Proyecto 3: [Nombre del Proyecto 3](https://github.com/Kilopolo/ProyectosBootcamp/wiki/Proyecto-3)
 
 ## Contribuir
 
-Si te gustaría contribuir al desarrollo de la Biblioteca Bootcamp-Spring-Biblioteca, por favor consulta nuestra [Guía de Contribución](CONTRIBUTING.md) para obtener más información sobre cómo empezar. Apreciamos todas las contribuciones para hacer que la aplicación sea más sólida y confiable.
+Si te gustaría contribuir al desarrollo de la Biblioteca Bootcamp-Spring-Biblioteca, por favor consulta nuestra [Guía de Contribución](CONTRIBUTIONS.md) para obtener más información sobre cómo empezar. Apreciamos todas las contribuciones para hacer que la aplicación sea más sólida y confiable.
 
 ## Licencia
 
