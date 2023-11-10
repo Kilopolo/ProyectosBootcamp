@@ -1,0 +1,8 @@
+
+juego-spock/target/classes/META-INF/MANIFEST.MF
+juego-spock/target/classes/META-INF/maven/com.capgemini.sala3/juego-spock/pom.properties
+juego-spock/target/classes/META-INF/maven/com.capgemini/DemoJPA/pom.properties
+juego-spock/target/classes/META-INF/maven/com.capgemini/juego-spock/pom.properties
+*.MF
+*.prefs
+*.class

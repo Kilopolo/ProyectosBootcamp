@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<head th:replace="fragments/head" />
+	<title>Add Prestamo</title>
+</head>
+
+<body>
+	<nav th:replace="fragments/nav" />
+	<div class="container">
+	<h3>Nuevo Prestamo de: <span  style="color: darkblue;" th:text="${lector.nombre}"></span> </h3>
+	<form action="#" th:action="@{/savereserva}" th:object="${prestamo}" method="post">
+
+		<p> Copia
+			<select name="copia">
+				<option value="">Selecciona</option>
+				<option th:each="copia : ${copias}" th:value="${copia.idcopia}" th:text="${copia.libro.titulo}">
+				</option>
+			</select>
+		</p>
+		<input th:field="*{lector.idlector}" type="hidden">
+		<button type="submit" class="btn btn-info col-2">Guardar libro</button>
+	</form>
+	<hr>
+	<a th:href="@{/reservas}">Volver</a>
+	</div>
+	<footer th:replace="fragments/footer" />
+</body>
+
+</html>
