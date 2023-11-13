@@ -44,6 +44,13 @@ const MenuScreen = ({ navigation }) => {
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>
+      <View style={styles.buttonContainer}>
+        <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("Login") }}>
+          <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
+            <Text style={styles.buttonText}>Login</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+      </View>
 
     </ScrollView>
   );
