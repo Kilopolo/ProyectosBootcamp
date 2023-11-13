@@ -1,19 +1,25 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import auth from "@react-native-firebase/auth"
 
 //locales
 import MenuScreen from "./screens/MenuScreen";
 import CreateUserScreen from "./screens/CreateUserScreen";
 import UsersList from "./screens/UsersList";
 import PartidosLists from "./screens/PartidosList";
+import Login from "./screens/Login";
+import LandingPage from "./screens/LandingPage";
 
 // const Stack = createNativeStackNavigator();
 const Stack = createStackNavigator();
 
+
 function MyStack() {
   return (
+    
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Menu"
@@ -30,12 +36,6 @@ function MyStack() {
           options={{ title: "Menu Principal" }}
         />
         <Stack.Screen
-          name="CreateUserScreen"
-          component={CreateUserScreen}
-          options={{ title: "Crear Usuario" }}
-        />
-
-        <Stack.Screen
           name="UsersList"
           component={UsersList}
           options={{ title: "Lista de Usuarios" }}
@@ -44,6 +44,21 @@ function MyStack() {
           name="PartidosLists"
           component={PartidosLists}
           options={{ title: "Lista de Partidos" }}
+        />
+        <Stack.Screen
+          name="CreateUserScreen"
+          component={CreateUserScreen}
+          options={{ title: "SingUp" }}
+          />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ title: "Login" }}
+        />
+        <Stack.Screen
+          name="LandingPage"
+          component={LandingPage}
+          options={{ title: "LandingPage" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

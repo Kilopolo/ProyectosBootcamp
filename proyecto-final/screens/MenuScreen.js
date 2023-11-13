@@ -23,13 +23,13 @@ const MenuScreen = ({ navigation }) => {
  
   return (
     <ScrollView >
-      <View style={styles.buttonContainer}>
+      {/* <View style={styles.buttonContainer}>
         <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("CreateUserScreen") }}>
           <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
             <Text style={styles.buttonText}>Crear Usuario</Text>
           </Animated.View>
         </TouchableWithoutFeedback>
-      </View>
+      </View> */}
       <View style={styles.buttonContainer}>
         <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("UsersList") }}>
           <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
@@ -44,6 +44,23 @@ const MenuScreen = ({ navigation }) => {
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("CreateUserScreen") }}>
+          <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
+            <Text style={styles.buttonText}>SingUp</Text>
+            </Animated.View>
+        </TouchableWithoutFeedback>
+        </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("Login") }}>
+          <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
+            <Text style={styles.buttonText}>Login</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+      </View>
+
     </ScrollView>
   );
 };
