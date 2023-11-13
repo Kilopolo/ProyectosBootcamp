@@ -16,7 +16,6 @@ const CreateUserScreen = ({ navigation }) => {
   const [direccion, setDireccion] = useState('');
   const [usuarioId, setUsuarioId] = useState('');
 
-  // Obtener el ID del usuario actualmente autenticado
   const [state, setState] = useState({
     dni: "",
     nombre: "",
@@ -25,48 +24,59 @@ const CreateUserScreen = ({ navigation }) => {
     direccion: "",
     usuario_id: usuarioId,
   });
- 
+
   const saveNewUser = async () => {
-    
-    setState({ ...state, dni: dni })
-    setState({ ...state, nombre: nombre })
-    setState({ ...state, apellido: apellido })
-    setState({ ...state, fechaNac: fechaNac })
-    setState({ ...state, direccion: direccion })
-    console.log(state);
-
-
-
     if (state.dni === "") {
       alert("Por favor ingrese un dni");
     } else {
       const ref = collection(firestore, "citizens");
       try {
-        addDoc(ref, state);
+        await addDoc(ref, state);
         console.log('Ciudadano creado correctamente');
+        alert("Usuario guardado");
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
-      alert("Usuario guardado");
     }
   };
+
   const handleSignUp = async () => {
     try {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        setUsuarioId(user.uid)
-      });
-      
+        .then((userCredential) => {
+          const user = userCredential.user;
+          setUsuarioId(user.uid);
+          setState({
+            dni: "dni",
+            nombre: "nombre",
+            apellido: "apellido",
+            fechaNac: "fechaNac",
+            direccion: "direccion",
+            usuario_id: "usuarioId",
+          });
+          console.log(state);
+          setState({
+            dni: dni,
+            nombre: nombre,
+            apellido: apellido,
+            fechaNac: fechaNac,
+            direccion: direccion,
+            usuario_id: usuarioId,
+          });
+          console.log(state);
+          // navigation.navigate("Menu");
+        }).then(() => { 
+          console.log(state);
+          saveNewUser();});
+
+
+        // console.log(state); 
       console.log("Usuario creado correctamente");
-      saveNewUser();
-      navigation.navigate("Menu");
     } catch (error) {
       console.error("Error al crear el usuario", error);
     }
   };
-
 
   return (
     <View>
