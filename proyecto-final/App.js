@@ -10,7 +10,6 @@ import MenuScreen from "./screens/MenuScreen";
 import CreateUserScreen from "./screens/CreateUserScreen";
 import UsersList from "./screens/UsersList";
 import FetchMovies from "./FetchMovies";
-import CreateCitizenScreen from "./screens/CreateCitizenScreen";
 import Login from "./screens/Login";
 import LandingPage from "./screens/LandingPage";
 
@@ -36,11 +35,11 @@ function MyStack() {
           component={MenuScreen}
           options={{ title: "Menu Principal" }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="CreateUserScreen"
           component={CreateUserScreen}
           options={{ title: "Crear Usuario" }}
-        />
+        /> */}
         <Stack.Screen
           name="UsersList"
           component={UsersList}
@@ -52,8 +51,8 @@ function MyStack() {
           options={{ title: "FetchMovies Example" }}
         />
         <Stack.Screen
-          name="CreateCitizenScreen"
-          component={CreateCitizenScreen}
+          name="CreateUserScreen"
+          component={CreateUserScreen}
           options={{ title: "SingUp" }}
           />
         <Stack.Screen

@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
+
 const CreateCitizenScreen = ({ navigation }) => {
   const [dni, setDNI] = useState('');
   const [nombre, setNombre] = useState('');
@@ -46,20 +47,6 @@ const CreateCitizenScreen = ({ navigation }) => {
 
   return (
     <View>
-      <Text>DNI:</Text>
-      <TextInput value={dni} onChangeText={setDNI} />
-
-      <Text>Nombre:</Text>
-      <TextInput value={nombre} onChangeText={setNombre} />
-
-      <Text>Apellido:</Text>
-      <TextInput value={apellido} onChangeText={setApellido} />
-
-      <Text>Fecha de Nacimiento:</Text>
-      <TextInput value={fechaNac} onChangeText={setFechaNac} />
-
-      <Text>Dirección:</Text>
-      <TextInput value={direccion} onChangeText={setDireccion} />
 
       <Button title="Crear Ciudadano" onPress={handleCreateCitizen} />
     </View>
