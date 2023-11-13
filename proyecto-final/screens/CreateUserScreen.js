@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
-import auth from "@react-native-firebase/auth";
-import database from '@react-native-firebase/database';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { firestore } from "../database/firebase";
+import { addDoc, collection } from "@firebase/firestore";
+// import database from '@react-native-firebase/database';
 
 
 const CreateUserScreen = ({ navigation }) => {
@@ -13,49 +15,59 @@ const CreateUserScreen = ({ navigation }) => {
   const [fechaNac, setFechaNac] = useState('');
   const [direccion, setDireccion] = useState('');
   const [usuarioId, setUsuarioId] = useState('');
-  // Obtener el ID del usuario actualmente autenticado
 
+  // Obtener el ID del usuario actualmente autenticado
+  const [state, setState] = useState({
+    dni: "",
+    nombre: "",
+    apellido: "",
+    fechaNac: "",
+    direccion: "",
+    usuario_id: usuarioId,
+  });
+ 
+  const saveNewUser = async () => {
+    
+    setState({ ...state, dni: dni })
+    setState({ ...state, nombre: nombre })
+    setState({ ...state, apellido: apellido })
+    setState({ ...state, fechaNac: fechaNac })
+    setState({ ...state, direccion: direccion })
+    console.log(state);
+
+
+
+    if (state.dni === "") {
+      alert("Por favor ingrese un dni");
+    } else {
+      const ref = collection(firestore, "citizens");
+      try {
+        addDoc(ref, state);
+        console.log('Ciudadano creado correctamente');
+      } catch (err) {
+        console.log(err);
+      }
+      alert("Usuario guardado");
+    }
+  };
   const handleSignUp = async () => {
     try {
-      await auth().createUserWithEmailAndPassword(email, password).then(()=>{setUsuarioId(auth().currentUser.uid)}) ;
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUsuarioId(user.uid)
+      });
+      
       console.log("Usuario creado correctamente");
-      handleCreateCitizen();
-      navigation.navigate("MenuScreen");
+      saveNewUser();
+      navigation.navigate("Menu");
     } catch (error) {
       console.error("Error al crear el usuario", error);
     }
   };
 
-  const handleCreateCitizen = async () => {
-    try {
-      // Verificar si el usuario ya existe en la base de datos
-      const snapshot = await database()
-        .ref(`/ciudadanos/${dni}`)
-        .once('value');
 
-      if (snapshot.exists()) {
-        console.log('El ciudadano ya existe en la base de datos');
-      } else {
-        // Crear un nuevo ciudadano en la base de datos
-        await database()
-          .ref(`/ciudadanos/${dni}`)
-          .set({
-            dni,
-            nombre,
-            apellido,
-            fechaNac,
-            direccion,
-            usuario_id: usuarioId,
-          });
-
-        console.log('Ciudadano creado correctamente');
-        navigation.navigate('MenuScreen');
-        // Puedes redirigir a otra pantalla o realizar otras acciones después de crear el ciudadano
-      }
-    } catch (error) {
-      console.error('Error al crear el ciudadano', error);
-    }
-  };
   return (
     <View>
       <Text>Email:</Text>
