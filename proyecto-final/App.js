@@ -7,7 +7,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import MenuScreen from "./screens/MenuScreen";
 import CreateUserScreen from "./screens/CreateUserScreen";
 import UsersList from "./screens/UsersList";
-import FetchMovies from "./FetchMovies";
 import PartidosLists from "./screens/PartidosList";
 
 // const Stack = createNativeStackNavigator();
@@ -45,11 +44,6 @@ function MyStack() {
           name="PartidosLists"
           component={PartidosLists}
           options={{ title: "Lista de Partidos" }}
-        />
-        <Stack.Screen
-          name="FetchMovies"
-          component={FetchMovies}
-          options={{ title: "FetchMovies Example" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

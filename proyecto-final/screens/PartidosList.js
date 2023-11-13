@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, FlatList } from "react-native";
 import { collection, getDocs } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
-import PartidoItem from "./PartidoItem";
+import PartidoItem from "../components/PartidoItem";
 
 const PartidosLists = () => {
   const [data, setData] = useState([]);
