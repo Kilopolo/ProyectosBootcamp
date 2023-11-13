@@ -1,69 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList } from "react-native";
-import { firestore, collection, getDocs } from "@firebase/firestore";
-import UserItem from "./UserItem"; // Crea un componente UserItem para mostrar un usuario individual
-import { ActivityIndicator } from "react-native";
+import { collection, getDocs } from "@firebase/firestore";
+import {firestore} from "../database/firebase";
+
 const UsersList = () => {
-  const [users, setUsers] = useState([]);
-  const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
-
   const fetchUsers = async () => {
     try {
+      const querySnapshot = await getDocs(collection(firestore, "users"));
+      const usersData = [];
 
-      const response = collection(firestore, "users");
-      const json = await response.json();
-      setData(json.users);
+      querySnapshot.forEach((doc) => {
+        usersData.push({ id: doc.id, ...doc.data() });
+      });
+
+      console.log("Fetched data:", usersData);
+
+      setData(usersData);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
     }
-
-    // const usersRef = collection(firestore, "users");
-    // // console.log("kakakak"+str(usersRef));
-    // const querySnapshot =  getDocs(usersRef);
-    // const usersData = [];
-
-    // querySnapshot.forEach((doc) => {
-    //   // doc.data() is never undefined for query doc snapshots
-    //   console.log(doc.id, " => ", doc.data());
-    //   usersData.push({ id: doc.id, ...doc.data() });
-    // });
-
-    // setUsers(usersData);
   };
 
-
+  console.log("Component rendered with data:", data);
   return (
-    <View style={{flex: 1, padding: 24}}>
+    <View style={{ flex: 1, padding: 24 }}>
       {isLoading ? (
-        <ActivityIndicator />
+        <Text>Loading...</Text>
       ) : (
         <FlatList
           data={data}
-          keyExtractor={({id}) => id}
-          renderItem={({item}) => (
-            <Text>
-              {item.title}, {item.releaseYear}
-            </Text>
+          keyExtractor={({ id }) => id}
+          renderItem={({ item }) => (
+            <View style={{ marginBottom: 10 }}>
+              <Text>Email: {item.email}</Text>
+              {item.name && <Text>Name: {item.name}</Text>}
+              {item.phone && <Text>Phone: {item.phone}</Text>}
+              {/* Add additional properties as needed */}
+            </View>
           )}
         />
       )}
     </View>
-    // <View>
-    //   <Text>Listado de Usuarios:</Text>
-    //   <FlatList
-    //     data={users}
-    //     keyExtractor={(item) => item.id}
-    //     renderItem={({ item }) => <UserItem user={item} />}
-    //   />
-    // </View>
   );
 };
 
