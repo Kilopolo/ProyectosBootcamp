@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList } from "react-native";
 import { collection, getDocs } from "@firebase/firestore";
-import {firestore} from "../database/firebase";
-import UserItem from "./UserItem";
+import { firestore } from "../database/firebase";
+import PartidoItem from "./PartidoItem";
 
-const UsersList = () => {
+const PartidosLists = () => {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
@@ -14,16 +14,16 @@ const UsersList = () => {
 
   const fetchUsers = async () => {
     try {
-      const querySnapshot = await getDocs(collection(firestore, "users"));
-      const usersData = [];
+      const querySnapshot = await getDocs(collection(firestore, "parties"));
+      const partyData = [];
 
       querySnapshot.forEach((doc) => {
-        usersData.push({ id: doc.id, ...doc.data() });
+        partyData.push({ id: doc.id, ...doc.data() });
       });
 
-      console.log("Fetched data:", usersData);
+      console.log("Fetched data:", partyData);
 
-      setData(usersData);
+      setData(partyData);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -40,11 +40,11 @@ const UsersList = () => {
         <FlatList
           data={data}
           keyExtractor={({ id }) => id}
-          renderItem={({ item }) => <UserItem user={item} />}
+          renderItem={({ item }) => <PartidoItem partido={item} />} // Change prop name to partido
         />
       )}
     </View>
   );
 };
 
-export default UsersList;
+export default PartidosLists;

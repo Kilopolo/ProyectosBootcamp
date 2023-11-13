@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { ScrollView, View, Text, Button , TouchableWithoutFeedback,Animated} from "react-native";
+import { ScrollView, View, Text,  TouchableWithoutFeedback,Animated} from "react-native";
 import styles from "./StyleMenuScreen";
  
 const MenuScreen = ({ navigation }) => {
@@ -34,6 +34,13 @@ const MenuScreen = ({ navigation }) => {
         <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("UsersList") }}>
           <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
             <Text style={styles.buttonText}>Lista de Usuarios</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+      </View>
+      <View style={styles.buttonContainer}>
+        <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("PartidosLists") }}>
+          <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
+            <Text style={styles.buttonText}>Lista de Partidos</Text>
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>

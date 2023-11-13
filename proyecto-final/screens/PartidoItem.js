@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const UserItem = ({ user }) => {
+const PartidoItem = ({ partido }) => {
   return (
     <View style={styles.container}>
-    <Text style={styles.text}>DNI: {user.dni}</Text>
-    <Text style={styles.text}>Email: {user.email}</Text>
+    <Text style={styles.text}>Nombre: {partido.nombre}</Text>
+    <Text style={styles.text}>Sede: {partido.sede}</Text>
   </View>
   );
 };
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default UserItem;
+export default PartidoItem;

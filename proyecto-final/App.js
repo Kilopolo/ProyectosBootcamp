@@ -8,6 +8,7 @@ import MenuScreen from "./screens/MenuScreen";
 import CreateUserScreen from "./screens/CreateUserScreen";
 import UsersList from "./screens/UsersList";
 import FetchMovies from "./FetchMovies";
+import PartidosLists from "./screens/PartidosList";
 
 // const Stack = createNativeStackNavigator();
 const Stack = createStackNavigator();
@@ -34,10 +35,16 @@ function MyStack() {
           component={CreateUserScreen}
           options={{ title: "Crear Usuario" }}
         />
+
         <Stack.Screen
           name="UsersList"
           component={UsersList}
           options={{ title: "Lista de Usuarios" }}
+        />
+        <Stack.Screen
+          name="PartidosLists"
+          component={PartidosLists}
+          options={{ title: "Lista de Partidos" }}
         />
         <Stack.Screen
           name="FetchMovies"
