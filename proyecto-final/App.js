@@ -11,6 +11,8 @@ import CreateUserScreen from "./screens/CreateUserScreen";
 import UsersList from "./screens/UsersList";
 import FetchMovies from "./FetchMovies";
 import CreateCitizenScreen from "./screens/CreateCitizenScreen";
+import Login from "./screens/Login";
+import LandingPage from "./screens/LandingPage";
 
 // const Stack = createNativeStackNavigator();
 const Stack = createStackNavigator();
@@ -53,6 +55,16 @@ function MyStack() {
           name="CreateCitizenScreen"
           component={CreateCitizenScreen}
           options={{ title: "SingUp" }}
+          />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ title: "Login" }}
+        />
+        <Stack.Screen
+          name="LandingPage"
+          component={LandingPage}
+          options={{ title: "LandingPage" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
