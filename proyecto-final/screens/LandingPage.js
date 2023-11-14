@@ -8,43 +8,82 @@ import {
   Button,
 } from "react-native";
 import { getAuth } from "firebase/auth";
+import { firestore } from "../database/firebase";
+import { collection, where, query, getDocs } from "@firebase/firestore";
 
 const LandingPage = ({ navigation }) => {
   const [userData, setUserData] = useState({});
   const [hasVoted, setHasVoted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const user = getAuth().currentUser;
+    const fetchData = async () => {
+      try {
+        const user = getAuth().currentUser;
 
-    if (user === null) {
-      navigation.navigate("Login");
-    } else {
-      // Obtener datos del usuario (ejemplo)
-      const fetchedUserData = {
-        nombre: "Nombre del Usuario",
-        apellido: "Apellido del Usuario",
-        dni: "12345678",
-        direccion: "Dirección del Usuario",
-        fechaNacimiento: "01/01/1990",
-      };
-      setUserData(fetchedUserData);
+        if (user === null) {
+          navigation.navigate("Login");
+        } else {
+          const ciudadano = await getCiudadano(user.uid);
 
-      // Comprobar si el usuario ha votado (ejemplo)
-      const userHasVoted = false; // Puedes establecer esto según la lógica de tu aplicación
-      setHasVoted(userHasVoted);
-    }
+          const fetchedUserData = {
+            nombre: ciudadano.nombre ,
+            apellido: ciudadano.apellido,
+            dni: ciudadano.dni,
+            direccion: ciudadano.direccion ,
+            fechaNacimiento: ciudadano.fechaNac,
+          };
+
+          setUserData("UserData",fetchedUserData);
+
+          // Comprobar si el usuario ha votado (ejemplo)
+          const userHasVoted = false; // Puedes establecer esto según la lógica de tu aplicación
+          setHasVoted(userHasVoted);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
+  const getCiudadano = async (userId) => {
+    try {
+      const querySnapshot = await getDocs(
+        query(collection(firestore, "citizens"), where("usuario_id", "==", userId))
+      );
+  
+      if (!querySnapshot.empty) {
+        const ciudadano = querySnapshot.docs[0].data();
+        
+        console.log("Datos del ciudadano:", ciudadano);  // Agrega este registro de consola
+  
+        return ciudadano;
+      } else {
+        console.log("No hay ciudadano");
+        return "No hay ciudadano";
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return "Error";
+    }
+  };
+  
   const handleVoteButton = () => {
-    // Acción al hacer clic en el botón de votar
-    // Esto puede incluir la lógica para el proceso de votación
+    
     console.log("Votar");
   };
 
+  if (loading) {
+    return <Text>Cargando...</Text>;
+  }
+
   return (
     <ImageBackground
-      source={require("../assets/BKG.png")} // Reemplaza 'tu_imagen_de_fondo.jpg' con la ruta de tu imagen
-      style={styles.background}
+      source={require("../assets/BKG.png")}
     >
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -68,7 +107,7 @@ const LandingPage = ({ navigation }) => {
         <Button
           title="Votar"
           onPress={handleVoteButton}
-          disabled={hasVoted} // Deshabilitar el botón si ya ha votado
+          disabled={hasVoted} 
         />
       </View>
     </ImageBackground>
