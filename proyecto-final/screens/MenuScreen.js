@@ -38,7 +38,7 @@ const MenuScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView>
+    <View style={styles.allMenuContainer}>
       {/* <View style={styles.buttonContainer}>
         <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("CreateUserScreen") }}>
           <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
@@ -46,49 +46,54 @@ const MenuScreen = ({ navigation }) => {
           </Animated.View>
         </TouchableWithoutFeedback>
       </View> */}
-      <View style={styles.buttonContainer}>
-        <TouchableWithoutFeedback
-          onPress={() => {
-            buttonScale();
-            navigation.navigate("CandidatosLists");
-          }}
-        >
-          <Animated.View
-            style={[styles.button, { transform: [{ scale: scaleValue }] }]}
-          >
-            <Text style={styles.buttonText}>Lista de Candidatos</Text>
-          </Animated.View>
-        </TouchableWithoutFeedback>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableWithoutFeedback
-          onPress={() => {
-            buttonScale();
-            navigation.navigate("PartidosLists");
-          }}
-        >
-          <Animated.View
-            style={[styles.button, { transform: [{ scale: scaleValue }] }]}
-          >
-            <Text style={styles.buttonText}>Lista de Partidos</Text>
-          </Animated.View>
-        </TouchableWithoutFeedback>
-      </View>
-
-      {authenticated ? (
-        <View style={styles.buttonContainer}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              buttonScale();
-              navigation.navigate("LandingPage");
-            }}
-          >
-            <Animated.View
-              style={[styles.button, { transform: [{ scale: scaleValue }] }]}
+      <View style={styles.someContainer}>
+        <ScrollView>
+          <View style={styles.buttonContainer}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                buttonScale();
+                navigation.navigate("CandidatosLists");
+              }}
             >
-              <Text style={styles.buttonText}>LandingPage</Text>
-            </Animated.View>
-          </TouchableWithoutFeedback>
+              <Animated.View
+                style={[styles.button, { transform: [{ scale: scaleValue }] }]}
+              >
+                <Text style={styles.buttonText}>Lista de Candidatos</Text>
+              </Animated.View>
+            </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                buttonScale();
+                navigation.navigate("PartidosLists");
+              }}
+            >
+              <Animated.View
+                style={[styles.button, { transform: [{ scale: scaleValue }] }]}
+              >
+                <Text style={styles.buttonText}>Lista de Partidos</Text>
+              </Animated.View>
+            </TouchableWithoutFeedback>
+          </View>
+        </ScrollView>
+      </View>
+      {authenticated ? (
+        <View style={styles.otherContainer}>
+          <View style={styles.buttonContainer}>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                buttonScale();
+                navigation.navigate("LandingPage");
+              }}
+            >
+              <Animated.View
+                style={[styles.button, { transform: [{ scale: scaleValue }] }]}
+              >
+                <Text style={styles.buttonText}>LandingPage</Text>
+              </Animated.View>
+            </TouchableWithoutFeedback>
+          </View>
         </View>
       ) : (
         <View style={styles.otherContainer}>
@@ -125,7 +130,7 @@ const MenuScreen = ({ navigation }) => {
           </View>
         </View>
       )}
-    </ScrollView>
+    </View>
   );
 };
 
