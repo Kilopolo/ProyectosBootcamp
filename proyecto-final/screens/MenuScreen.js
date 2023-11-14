@@ -93,7 +93,7 @@ const MenuScreen = ({ navigation }) => {
               <Text style={styles.text}>No autenticado</Text>
             </View>
             <View style={styles.otherContainerBottom}>
-              <View style={styles.buttonContainer}>
+              <View style={styles.buttonOtherContainer}>
                 <TouchableWithoutFeedback
                   onPress={() => {
                     buttonScale();
@@ -111,7 +111,7 @@ const MenuScreen = ({ navigation }) => {
                 </TouchableWithoutFeedback>
               </View>
 
-              <View style={styles.buttonContainer}>
+              <View style={styles.buttonOtherContainer}>
                 <TouchableWithoutFeedback
                   onPress={() => {
                     buttonScale();
