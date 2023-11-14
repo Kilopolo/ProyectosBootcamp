@@ -3,17 +3,20 @@ import { View, Text, FlatList } from "react-native";
 import { collection, getDocs, getDoc ,doc,query, where } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
 
-const CandidatosLists = () => {
+const CandidatosLists = ({ party_id }) => {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchCandidato();
-  }, []);
+  }, [party_id]);
 
   const fetchCandidato = async () => {
     try {
-      const querySnapshot = await getDocs(collection(firestore, "aplicants"));
+      const querySnapshot = await getDocs(
+        query(collection(firestore, "aplicants"), where("party_id", "==", party_id))
+      );
+
       const aplicantData = [];
 
       for (const doc of querySnapshot.docs) {
