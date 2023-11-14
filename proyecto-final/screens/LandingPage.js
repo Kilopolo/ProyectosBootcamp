@@ -21,11 +21,12 @@ const LandingPage = ({ navigation }) => {
           const citizen = await getCiudadano(user.uid);
 
           const fetchedUserData = {
-            Nombre: citizen.nombre,
-            Apellido: citizen.apellido,
-            DNI: citizen.dni,
-            Dirección: citizen.direccion,
+            "Nombre": citizen.nombre,
+            "Apellido": citizen.apellido,
+            "DNI": citizen.dni,
+            "Dirección": citizen.direccion,
             "Fecha nacimiento": citizen.fechaNac,
+            "¿Voto?": citizen.voto,
           };
 
           setUserData(fetchedUserData);

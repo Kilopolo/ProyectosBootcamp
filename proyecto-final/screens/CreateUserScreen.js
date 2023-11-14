@@ -13,6 +13,7 @@ const CreateUserScreen = ({ navigation }) => {
   const [apellido, setApellido] = useState("");
   const [fechaNac, setFechaNac] = useState("");
   const [direccion, setDireccion] = useState("");
+  const [Voto, setVoto] = useState(false);
   const [usuarioId, setUsuarioId] = useState("");
 
   const [state, setState] = useState({
@@ -68,6 +69,7 @@ const CreateUserScreen = ({ navigation }) => {
         fechaNac: fechaNac,
         direccion: direccion,
         usuario_id: usuarioId,
+        voto: false,
       });
       saveNewUser();
       console.log(state);
