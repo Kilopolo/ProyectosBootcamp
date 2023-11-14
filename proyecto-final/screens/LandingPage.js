@@ -27,10 +27,10 @@ const LandingPage = ({ navigation }) => {
           const citizen = await getCiudadano(user.uid);
 
           const fetchedUserData = {
-            "Nombre": citizen.nombre ,
-            "Apellido": citizen.apellido,
-            "DNI": citizen.dni,
-            "Dirección": citizen.direccion ,
+            Nombre: citizen.nombre,
+            Apellido: citizen.apellido,
+            DNI: citizen.dni,
+            Dirección: citizen.direccion,
             "Fecha nacimiento": citizen.fechaNac,
           };
 
@@ -53,14 +53,17 @@ const LandingPage = ({ navigation }) => {
   const getCiudadano = async (userId) => {
     try {
       const querySnapshot = await getDocs(
-        query(collection(firestore, "citizens"), where("usuario_id", "==", userId))
+        query(
+          collection(firestore, "citizens"),
+          where("usuario_id", "==", userId)
+        )
       );
-  
+
       if (!querySnapshot.empty) {
         const ciudadano = querySnapshot.docs[0].data();
-        
-        console.log("Datos del ciudadano:", ciudadano);  // Agrega este registro de consola
-  
+
+        console.log("Datos del ciudadano:", ciudadano); // Agrega este registro de consola
+
         return ciudadano;
       } else {
         console.log("No hay ciudadano");
@@ -71,9 +74,8 @@ const LandingPage = ({ navigation }) => {
       return "Error";
     }
   };
-  
+
   const handleVoteButton = () => {
-    
     console.log("Votar");
   };
 
@@ -82,32 +84,33 @@ const LandingPage = ({ navigation }) => {
   }
 
   return (
-  
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          ¡Bienvenido, {getAuth().currentUser.email || "Usuario"}!
-        </Text>
-        <Text style={styles.subtitle}>Datos del Usuario:</Text>
-        <FlatList
-          data={Object.entries(userData)}
-          renderItem={({ item }) => (
-            <View style={styles.userInfo}>
-              <Text style={styles.label}>{item[0]}</Text>
-              <Text style={styles.label}>{item[1]}</Text>
-            </View>
-          )}
-          keyExtractor={(id) => id}
-        />
-        <Text style={styles.subtitle}>Estado del Voto:</Text>
-        <Text style={styles.status}>
-          {hasVoted ? "Ha Votado" : "Aún no ha Votado"}
-        </Text>
-        <Button
-          title="Votar"
-          onPress={handleVoteButton}
-          disabled={hasVoted} 
-        />
-      </View>
+    <View style={styles.container}>
+      <Text style={styles.title}>
+        ¡Bienvenido, {getAuth().currentUser.email || "Usuario"}!
+      </Text>
+      <Text style={styles.subtitle}>Datos del Usuario:</Text>
+      <FlatList
+        data={Object.entries(userData)}
+        renderItem={({ item }) => (
+          <View style={styles.userInfo}>
+            <Text style={styles.label}>{item[0]}</Text>
+            <Text style={styles.value}>{item[1]}</Text>
+          </View>
+        )}
+        keyExtractor={(id) => id}
+      />
+      <Text style={styles.subtitle}>Estado del Voto:</Text>
+      <Text style={styles.status}>
+        {hasVoted ? (
+          <Text style={{ color: "green" }}>Ha Votado</Text>
+        ) : (
+          <Text style={{ color: "red" }}>Aún no ha Votado</Text>
+        )}
+      </Text>
+      {!hasVoted && (
+        <Button title="Votar" onPress={handleVoteButton} />
+      )}
+    </View>
   );
 };
 
@@ -127,31 +130,27 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
-   
   },
   subtitle: {
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 20,
     marginBottom: 10,
-  
   },
   userInfo: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 10,
+    marginBottom: 5,
   },
   label: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
-  }, 
+  },
   value: {
-    fontSize: 18,
-    
+    fontSize: 14,
   },
   status: {
     fontSize: 20,
-    color: "white",
     marginBottom: 10,
   },
 });
