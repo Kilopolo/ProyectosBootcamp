@@ -31,13 +31,6 @@ const MenuScreen = ({ navigation }) => {
         </TouchableWithoutFeedback>
       </View> */}
       <View style={styles.buttonContainer}>
-        <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("CandidatosLists") }}>
-          <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
-            <Text style={styles.buttonText}>Lista de Candidatos</Text>
-          </Animated.View>
-        </TouchableWithoutFeedback>
-      </View>
-      <View style={styles.buttonContainer}>
         <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("PartidosLists") }}>
           <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
             <Text style={styles.buttonText}>Lista de Partidos</Text>
