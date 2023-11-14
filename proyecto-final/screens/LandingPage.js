@@ -15,19 +15,24 @@ const LandingPage = ({ navigation }) => {
 
   useEffect(() => {
     const user = getAuth().currentUser;
-    // Obtener datos del usuario (ejemplo)
-    const fetchedUserData = {
-      nombre: "Nombre del Usuario",
-      apellido: "Apellido del Usuario",
-      dni: "12345678",
-      direccion: "Dirección del Usuario",
-      fechaNacimiento: "01/01/1990",
-    };
-    setUserData(fetchedUserData);
 
-    // Comprobar si el usuario ha votado (ejemplo)
-    const userHasVoted = false; // Puedes establecer esto según la lógica de tu aplicación
-    setHasVoted(userHasVoted);
+    if (user === null) {
+      navigation.navigate("Login");
+    } else {
+      // Obtener datos del usuario (ejemplo)
+      const fetchedUserData = {
+        nombre: "Nombre del Usuario",
+        apellido: "Apellido del Usuario",
+        dni: "12345678",
+        direccion: "Dirección del Usuario",
+        fechaNacimiento: "01/01/1990",
+      };
+      setUserData(fetchedUserData);
+
+      // Comprobar si el usuario ha votado (ejemplo)
+      const userHasVoted = false; // Puedes establecer esto según la lógica de tu aplicación
+      setHasVoted(userHasVoted);
+    }
   }, []);
 
   const handleVoteButton = () => {

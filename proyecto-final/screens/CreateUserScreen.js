@@ -72,6 +72,7 @@ const CreateUserScreen = ({ navigation }) => {
       saveNewUser();
       console.log(state);
       console.log("Usuario creado correctamente");
+      navigation.navigate("Login");
     } catch (error) {
       console.error("Error al crear el usuario", error);
     }
