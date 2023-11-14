@@ -10,6 +10,7 @@ const CreateCitizenScreen = ({ navigation }) => {
   const [apellido, setApellido] = useState('');
   const [fechaNac, setFechaNac] = useState('');
   const [direccion, setDireccion] = useState('');
+  const [voto, setVoto] = useState(false);
 
   // Obtener el ID del usuario actualmente autenticado
   const usuarioId = auth().currentUser.uid;
@@ -34,6 +35,7 @@ const CreateCitizenScreen = ({ navigation }) => {
             fechaNac,
             direccion,
             usuario_id: usuarioId,
+            voto,
           });
 
         console.log('Ciudadano creado correctamente');

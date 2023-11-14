@@ -32,7 +32,7 @@ const LandingPage = ({ navigation }) => {
             "DNI": citizen.dni,
             "Dirección": citizen.direccion,
             "Fecha nacimiento": citizen.fechaNac,
-            "¿Voto?": citizen.voto,
+            "¿Voto?": citizen.voto.toString(),
           };
 
           setUserData(fetchedUserData);

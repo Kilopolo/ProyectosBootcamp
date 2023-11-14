@@ -13,7 +13,7 @@ const CreateUserScreen = ({ navigation }) => {
   const [apellido, setApellido] = useState("");
   const [fechaNac, setFechaNac] = useState("");
   const [direccion, setDireccion] = useState("");
-  const [Voto, setVoto] = useState(false);
+  const [voto, setVoto] = useState(false);
   const [usuarioId, setUsuarioId] = useState("");
 
   const [state, setState] = useState({
@@ -23,6 +23,7 @@ const CreateUserScreen = ({ navigation }) => {
     fechaNac: fechaNac,
     direccion: direccion,
     usuario_id: usuarioId,
+    voto,
   });
 
   const saveNewUser = async () => {
@@ -69,7 +70,7 @@ const CreateUserScreen = ({ navigation }) => {
         fechaNac: fechaNac,
         direccion: direccion,
         usuario_id: usuarioId,
-        voto: false,
+        voto,
       });
       saveNewUser();
       console.log(state);
@@ -153,6 +154,13 @@ const CreateUserScreen = ({ navigation }) => {
           // console.log(direccion);
           setState((prevState) => ({ ...prevState, direccion: text }));
           // console.log(state);
+        }}
+      />
+      <TextInput
+        style={{ display: "none" }}
+        value={voto.toString()}
+        onChangeText={(text) => {
+          setVoto(text === "true");
         }}
       />
 
