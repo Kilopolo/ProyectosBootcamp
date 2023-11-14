@@ -41,32 +41,13 @@ const MenuScreen = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("../assets/BKG.png")} // Reemplaza 'tu_imagen_de_fondo.jpg' con la ruta de tu imagen
-      style={styles.background}
+      style={styles.allMenuContainer}
     >
       <View style={styles.allMenuContainer}>
-        {/* <View style={styles.buttonContainer}>
-        <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("CreateUserScreen") }}>
-          <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
-            <Text style={styles.buttonText}>Crear Usuario</Text>
-          </Animated.View>
-        </TouchableWithoutFeedback>
-      </View> */}
+
         <View style={styles.someContainer}>
           <ScrollView>
-            {/* <View style={styles.buttonContainer}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                buttonScale();
-                navigation.navigate("CandidatosLists");
-              }}
-            >
-              <Animated.View
-                style={[styles.button, { transform: [{ scale: scaleValue }] }]}
-              >
-                <Text style={styles.buttonText}>Lista de Candidatos</Text>
-              </Animated.View>
-            </TouchableWithoutFeedback>
-          </View> */}
+
             <View style={styles.buttonContainer}>
               <TouchableWithoutFeedback
                 onPress={() => {
@@ -108,42 +89,45 @@ const MenuScreen = ({ navigation }) => {
           </View>
         ) : (
           <View style={styles.otherContainer}>
-            {/* Agrega aquí el contenido que deseas mostrar cuando el usuario no está autenticado */}
-            <Text>No autenticado</Text>
-            <View style={styles.buttonContainer}>
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  buttonScale();
-                  navigation.navigate("CreateUserScreen");
-                }}
-              >
-                <Animated.View
-                  style={[
-                    styles.button,
-                    { transform: [{ scale: scaleValue }] },
-                  ]}
-                >
-                  <Text style={styles.buttonText}>SingUp</Text>
-                </Animated.View>
-              </TouchableWithoutFeedback>
+            <View style={styles.otherContainerTop}>
+              <Text style={styles.text}>No autenticado</Text>
             </View>
-
-            <View style={styles.buttonContainer}>
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  buttonScale();
-                  navigation.navigate("Login");
-                }}
-              >
-                <Animated.View
-                  style={[
-                    styles.button,
-                    { transform: [{ scale: scaleValue }] },
-                  ]}
+            <View style={styles.otherContainerBottom}>
+              <View style={styles.buttonContainer}>
+                <TouchableWithoutFeedback
+                  onPress={() => {
+                    buttonScale();
+                    navigation.navigate("CreateUserScreen");
+                  }}
                 >
-                  <Text style={styles.buttonText}>Login</Text>
-                </Animated.View>
-              </TouchableWithoutFeedback>
+                  <Animated.View
+                    style={[
+                      styles.button,
+                      { transform: [{ scale: scaleValue }] },
+                    ]}
+                  >
+                    <Text style={styles.buttonText}>SingUp</Text>
+                  </Animated.View>
+                </TouchableWithoutFeedback>
+              </View>
+
+              <View style={styles.buttonContainer}>
+                <TouchableWithoutFeedback
+                  onPress={() => {
+                    buttonScale();
+                    navigation.navigate("Login");
+                  }}
+                >
+                  <Animated.View
+                    style={[
+                      styles.button,
+                      { transform: [{ scale: scaleValue }] },
+                    ]}
+                  >
+                    <Text style={styles.buttonText}>Login</Text>
+                  </Animated.View>
+                </TouchableWithoutFeedback>
+              </View>
             </View>
           </View>
         )}

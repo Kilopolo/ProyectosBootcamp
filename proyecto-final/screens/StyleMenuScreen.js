@@ -37,28 +37,39 @@ const styles = StyleSheet.create({
   },
   otherContainer: {
     flex: 2,
+    padding: 5,
+    backgroundColor: "white",
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  otherContainerTop: {
+    flex: 1,
+
+    textAlign: "center",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 12,
+    textAlign: "center",
+    justifyContent: "center",
+  },
+  otherContainerBottom: {
+    flex: 5,
     flexDirection: "row",
-    borderColor: "grey",
-    borderWidth: 1,
-    margin: 1,
-    // flexWrap: "wrap",
-    // alignItems: "center",
-    // justifyContent: "center",
+    justifyContent: "space-evenly",
   },
   someContainer: {
     flex: 10,
-    borderColor: "grey",
-    borderWidth: 1,
-    margin: 1,
     // flexWrap: "wrap",
     // alignItems: "center",
     // justifyContent: "center",
   },
   allMenuContainer: {
     flex: 1,
-    borderColor: "grey",
-    borderWidth: 1,
-    margin: 1,
+
   },
 });
 
