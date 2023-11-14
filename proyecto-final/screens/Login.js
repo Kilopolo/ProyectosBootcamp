@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import { collection, getDocs } from "@firebase/firestore";
 
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet,KeyboardAvoidingView, Platform} from 'react-native';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 
@@ -31,6 +31,10 @@ function Login({ navigation }) {
       };
 
   return (
+    <KeyboardAvoidingView
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    style={{ flex: 1 }}
+  >
     <View style={styles.container}>
       <Text style={styles.title}>Iniciar Sesión</Text>
       <TextInput
@@ -48,6 +52,7 @@ function Login({ navigation }) {
       />
       <Button title="Iniciar Sesión" onPress={handleLogin} />
     </View>
+    </KeyboardAvoidingView>
   );
 }
 

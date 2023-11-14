@@ -1,19 +1,13 @@
 import { StyleSheet} from "react-native";
-const styles = StyleSheet.create({
+const stylesUser = StyleSheet.create({
 
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        padding:5,
+        justifyContent: "center",
+        alignItems: "center",
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
+    label :{
         color: '#333333',
         marginBottom: 5,
     },
@@ -23,7 +17,9 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderColor: '#CCCCCC',
+        marginBottom: 5,
     },
+   
 });
 
-export default styles;
+export default stylesUser;

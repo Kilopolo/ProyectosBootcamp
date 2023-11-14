@@ -44,7 +44,7 @@ const PartidosLists = () => {
           renderItem={({ item }) => (
             <View>
               <PartidoItem partido={item} />
-              <CandidatosLists partyId={item.id} />
+              <CandidatosLists party_id={item.id} />
             </View>
           )}
         />

@@ -7,7 +7,7 @@ import {
   Animated,
   ImageBackground,
 } from "react-native";
-import styles from "./StyleMenuScreen";
+import stylesMenu from "./StyleMenuScreen";
 import { getAuth } from "firebase/auth";
 import PartidosLists from "./PartidosList";
 
@@ -42,11 +42,11 @@ const MenuScreen = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("../assets/BKG.png")} // Reemplaza 'tu_imagen_de_fondo.jpg' con la ruta de tu imagen
-      style={styles.allMenuContainer}
+      style={stylesMenu.allMenuContainer}
     >
-      <View style={styles.allMenuContainer}>
+      <View style={stylesMenu.allMenuContainer}>
 
-        <View style={styles.someContainer}>
+        <View style={stylesMenu.someContainer}>
           <ScrollView>
             <PartidosLists />
             {/* <View style={styles.buttonContainer}>
@@ -69,8 +69,8 @@ const MenuScreen = ({ navigation }) => {
           </ScrollView>
         </View>
         {authenticated ? (
-          <View style={styles.otherContainer}>
-            <View style={styles.buttonOtherContainer}>
+          <View style={stylesMenu.otherContainer}>
+            <View style={stylesMenu.buttonOtherContainer}>
               <TouchableWithoutFeedback
                 onPress={() => {
                   buttonScale();
@@ -79,22 +79,22 @@ const MenuScreen = ({ navigation }) => {
               >
                 <Animated.View
                   style={[
-                    styles.button,
+                    stylesMenu.button,
                     { transform: [{ scale: scaleValue }] },
                   ]}
                 >
-                  <Text style={styles.buttonText}>HOME</Text>
+                  <Text style={stylesMenu.buttonText}>HOME</Text>
                 </Animated.View>
               </TouchableWithoutFeedback>
             </View>
           </View>
         ) : (
-          <View style={styles.otherContainer}>
-            <View style={styles.otherContainerTop}>
-              <Text style={styles.text}>No autenticado</Text>
+          <View style={stylesMenu.otherContainer}>
+            <View style={stylesMenu.otherContainerTop}>
+              <Text style={stylesMenu.text}>No autenticado</Text>
             </View>
-            <View style={styles.otherContainerBottom}>
-              <View style={styles.buttonOtherContainer}>
+            <View style={stylesMenu.otherContainerBottom}>
+              <View style={stylesMenu.buttonOtherContainer}>
                 <TouchableWithoutFeedback
                   onPress={() => {
                     buttonScale();
@@ -103,16 +103,16 @@ const MenuScreen = ({ navigation }) => {
                 >
                   <Animated.View
                     style={[
-                      styles.button,
+                      stylesMenu.button,
                       { transform: [{ scale: scaleValue }] },
                     ]}
                   >
-                    <Text style={styles.buttonText}>SingUp</Text>
+                    <Text style={stylesMenu.buttonText}>SingUp</Text>
                   </Animated.View>
                 </TouchableWithoutFeedback>
               </View>
 
-              <View style={styles.buttonOtherContainer}>
+              <View style={stylesMenu.buttonOtherContainer}>
                 <TouchableWithoutFeedback
                   onPress={() => {
                     buttonScale();
@@ -121,11 +121,11 @@ const MenuScreen = ({ navigation }) => {
                 >
                   <Animated.View
                     style={[
-                      styles.button,
+                      stylesMenu.button,
                       { transform: [{ scale: scaleValue }] },
                     ]}
                   >
-                    <Text style={styles.buttonText}>Login</Text>
+                    <Text style={stylesMenu.buttonText}>Login</Text>
                   </Animated.View>
                 </TouchableWithoutFeedback>
               </View>
