@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import styles from "./StyleMenuScreen";
 import { getAuth } from "firebase/auth";
+import PartidosLists from "./PartidosList";
 
 const MenuScreen = ({ navigation }) => {
   const [scaleValue] = useState(new Animated.Value(1));
@@ -47,8 +48,8 @@ const MenuScreen = ({ navigation }) => {
 
         <View style={styles.someContainer}>
           <ScrollView>
-
-            <View style={styles.buttonContainer}>
+            <PartidosLists />
+            {/* <View style={styles.buttonContainer}>
               <TouchableWithoutFeedback
                 onPress={() => {
                   buttonScale();
@@ -64,7 +65,7 @@ const MenuScreen = ({ navigation }) => {
                   <Text style={styles.buttonText}>Lista de Partidos</Text>
                 </Animated.View>
               </TouchableWithoutFeedback>
-            </View>
+            </View> */}
           </ScrollView>
         </View>
         {authenticated ? (
