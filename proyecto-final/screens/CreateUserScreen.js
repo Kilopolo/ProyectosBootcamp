@@ -84,7 +84,7 @@ const CreateUserScreen = ({ navigation }) => {
         value={email}
         onChangeText={(text) => {
           setEmail(text);
-          console.log(email);
+          // console.log(email);
         }}
       />
 
@@ -94,7 +94,7 @@ const CreateUserScreen = ({ navigation }) => {
         value={password}
         onChangeText={(text) => {
           setPassword(text);
-          console.log(password);
+          // console.log(password);
         }}
       />
 
@@ -103,9 +103,9 @@ const CreateUserScreen = ({ navigation }) => {
         value={dni}
         onChangeText={(text) => {
           setDNI(text);
-          console.log(dni);
+          // console.log(dni);
           setState((prevState) => ({ ...prevState, dni: text }));
-          console.log(state);
+          // console.log(state);
         }}
       />
 
@@ -114,9 +114,9 @@ const CreateUserScreen = ({ navigation }) => {
         value={nombre}
         onChangeText={(text) => {
           setNombre(text);
-          console.log(nombre);
+          // console.log(nombre);
           setState((prevState) => ({ ...prevState, nombre: text }));
-          console.log(state);
+          // console.log(state);
         }}
       />
 
@@ -125,9 +125,9 @@ const CreateUserScreen = ({ navigation }) => {
         value={apellido}
         onChangeText={(text) => {
           setApellido(text);
-          console.log(apellido);
+          // console.log(apellido);
           setState((prevState) => ({ ...prevState, apellido: text }));
-          console.log(state);
+          // console.log(state);
         }}
       />
 
@@ -136,9 +136,9 @@ const CreateUserScreen = ({ navigation }) => {
         value={fechaNac}
         onChangeText={(text) => {
           setFechaNac(text);
-          console.log(fechaNac);
+          // console.log(fechaNac);
           setState((prevState) => ({ ...prevState, fechaNac: text }));
-          console.log(state);
+          // console.log(state);
         }}
       />
 
@@ -147,9 +147,9 @@ const CreateUserScreen = ({ navigation }) => {
         value={direccion}
         onChangeText={(text) => {
           setDireccion(text);
-          console.log(direccion);
+          // console.log(direccion);
           setState((prevState) => ({ ...prevState, direccion: text }));
-          console.log(state);
+          // console.log(state);
         }}
       />
 
