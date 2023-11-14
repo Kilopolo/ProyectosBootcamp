@@ -5,6 +5,7 @@ import {
   Text,
   TouchableWithoutFeedback,
   Animated,
+  ImageBackground,
 } from "react-native";
 import styles from "./StyleMenuScreen";
 import { getAuth } from "firebase/auth";
@@ -38,17 +39,21 @@ const MenuScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.allMenuContainer}>
-      {/* <View style={styles.buttonContainer}>
+    <ImageBackground
+      source={require("../assets/BKG.png")} // Reemplaza 'tu_imagen_de_fondo.jpg' con la ruta de tu imagen
+      style={styles.background}
+    >
+      <View style={styles.allMenuContainer}>
+        {/* <View style={styles.buttonContainer}>
         <TouchableWithoutFeedback onPress={() => { buttonScale(); navigation.navigate("CreateUserScreen") }}>
           <Animated.View style={[styles.button, { transform: [{ scale: scaleValue }] }]}>
             <Text style={styles.buttonText}>Crear Usuario</Text>
           </Animated.View>
         </TouchableWithoutFeedback>
       </View> */}
-      <View style={styles.someContainer}>
-        <ScrollView>
-          {/* <View style={styles.buttonContainer}>
+        <View style={styles.someContainer}>
+          <ScrollView>
+            {/* <View style={styles.buttonContainer}>
             <TouchableWithoutFeedback
               onPress={() => {
                 buttonScale();
@@ -62,75 +67,88 @@ const MenuScreen = ({ navigation }) => {
               </Animated.View>
             </TouchableWithoutFeedback>
           </View> */}
-          <View style={styles.buttonContainer}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                buttonScale();
-                navigation.navigate("PartidosLists");
-              }}
-            >
-              <Animated.View
-                style={[styles.button, { transform: [{ scale: scaleValue }] }]}
+            <View style={styles.buttonContainer}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  buttonScale();
+                  navigation.navigate("PartidosLists");
+                }}
               >
-                <Text style={styles.buttonText}>Lista de Partidos</Text>
-              </Animated.View>
-            </TouchableWithoutFeedback>
-          </View>
-        </ScrollView>
-      </View>
-      {authenticated ? (
-        <View style={styles.otherContainer}>
-          <View style={styles.buttonContainer}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                buttonScale();
-                navigation.navigate("LandingPage");
-              }}
-            >
-              <Animated.View
-                style={[styles.button, { transform: [{ scale: scaleValue }] }]}
-              >
-                <Text style={styles.buttonText}>LandingPage</Text>
-              </Animated.View>
-            </TouchableWithoutFeedback>
-          </View>
+                <Animated.View
+                  style={[
+                    styles.button,
+                    { transform: [{ scale: scaleValue }] },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>Lista de Partidos</Text>
+                </Animated.View>
+              </TouchableWithoutFeedback>
+            </View>
+          </ScrollView>
         </View>
-      ) : (
-        <View style={styles.otherContainer}>
-          {/* Agrega aquí el contenido que deseas mostrar cuando el usuario no está autenticado */}
-          <Text>No autenticado</Text>
-          <View style={styles.buttonContainer}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                buttonScale();
-                navigation.navigate("CreateUserScreen");
-              }}
-            >
-              <Animated.View
-                style={[styles.button, { transform: [{ scale: scaleValue }] }]}
+        {authenticated ? (
+          <View style={styles.otherContainer}>
+            <View style={styles.buttonContainer}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  buttonScale();
+                  navigation.navigate("LandingPage");
+                }}
               >
-                <Text style={styles.buttonText}>SingUp</Text>
-              </Animated.View>
-            </TouchableWithoutFeedback>
+                <Animated.View
+                  style={[
+                    styles.button,
+                    { transform: [{ scale: scaleValue }] },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>LandingPage</Text>
+                </Animated.View>
+              </TouchableWithoutFeedback>
+            </View>
           </View>
+        ) : (
+          <View style={styles.otherContainer}>
+            {/* Agrega aquí el contenido que deseas mostrar cuando el usuario no está autenticado */}
+            <Text>No autenticado</Text>
+            <View style={styles.buttonContainer}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  buttonScale();
+                  navigation.navigate("CreateUserScreen");
+                }}
+              >
+                <Animated.View
+                  style={[
+                    styles.button,
+                    { transform: [{ scale: scaleValue }] },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>SingUp</Text>
+                </Animated.View>
+              </TouchableWithoutFeedback>
+            </View>
 
-          <View style={styles.buttonContainer}>
-            <TouchableWithoutFeedback
-              onPress={() => {
-                buttonScale();
-                navigation.navigate("Login");
-              }}
-            >
-              <Animated.View
-                style={[styles.button, { transform: [{ scale: scaleValue }] }]}
+            <View style={styles.buttonContainer}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  buttonScale();
+                  navigation.navigate("Login");
+                }}
               >
-                <Text style={styles.buttonText}>Login</Text>
-              </Animated.View>
-            </TouchableWithoutFeedback>
+                <Animated.View
+                  style={[
+                    styles.button,
+                    { transform: [{ scale: scaleValue }] },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>Login</Text>
+                </Animated.View>
+              </TouchableWithoutFeedback>
+            </View>
           </View>
-        </View>
-      )}
-    </View>
+        )}
+      </View>
+    </ImageBackground>
   );
 };
 
