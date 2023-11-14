@@ -34,7 +34,7 @@ const PartidosLists = () => {
 
   console.log("Component rendered with data:", data);
   return (
-    <View style={{ flex: 1, padding: 24 }}>
+    <View style={{ flex: 1, padding: 20 }}>
       {isLoading ? (
         <Text>Loading...</Text>
       ) : (

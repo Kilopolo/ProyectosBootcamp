@@ -86,7 +86,7 @@ const CandidatosLists = () => {
           renderItem={({ item }) => {
             console.log("Rendering Candidato Item with data:", item);
             return (
-              <View  style={{ flex: 1, padding: 5 }}>
+              <View>
                 {/*<Text>{`Partido: ${item.partyName}`}</Text>*/}
                 <Text>{`Candidato: ${item.citizenName}`}</Text>
               </View>
