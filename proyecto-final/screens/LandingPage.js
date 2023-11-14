@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  FlatList,
-  Button,
-} from "react-native";
+import { View, Text, ImageBackground, FlatList, Button } from "react-native";
 import { getAuth } from "firebase/auth";
 import { firestore } from "../database/firebase";
 import { collection, where, query, getDocs } from "@firebase/firestore";
+import styles from "./StyleLandingPage";
 
 const LandingPage = ({ navigation }) => {
   const [userData, setUserData] = useState({});
@@ -64,6 +58,7 @@ const LandingPage = ({ navigation }) => {
 
         console.log("Datos del ciudadano:", ciudadano); // Agrega este registro de consola
 
+
         return ciudadano;
       } else {
         console.log("No hay ciudadano");
@@ -84,6 +79,9 @@ const LandingPage = ({ navigation }) => {
   }
 
   return (
+    // <ImageBackground
+    //   source={require("../assets/BKG.png")}
+    // >
     <View style={styles.container}>
       <Text style={styles.title}>
         ¡Bienvenido, {getAuth().currentUser.email || "Usuario"}!
@@ -114,45 +112,6 @@ const LandingPage = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    resizeMode: "cover", // O 'contain' según tus preferencias
-    justifyContent: "center",
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
-  subtitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginTop: 20,
-    marginBottom: 10,
-  },
-  userInfo: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 5,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  value: {
-    fontSize: 14,
-  },
-  status: {
-    fontSize: 20,
-    marginBottom: 10,
-  },
-});
+
 
 export default LandingPage;
