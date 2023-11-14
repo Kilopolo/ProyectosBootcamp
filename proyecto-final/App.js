@@ -37,7 +37,12 @@ function MyStack() {
       <Stack.Screen
         name="Menu"
         component={MenuScreen}
-        options={{ title: "Menu Principal" }}
+        options={({ navigation }) => ({
+          title: "Menu Principal",
+          headerLeft: null, 
+          gestureEnabled: false, 
+          headerTitleAlign: 'center',
+        })}
       />
       <Stack.Screen
         name="PartidosLists"
