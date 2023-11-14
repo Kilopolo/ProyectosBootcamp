@@ -3,16 +3,17 @@ import { View, Text, FlatList } from "react-native";
 import { collection, getDocs } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
 import PartidoItem from "../components/PartidoItem";
+import CandidatosLists from "./CandidatosLists";
 
 const PartidosLists = () => {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchUsers();
+    fetchPartido();
   }, []);
 
-  const fetchUsers = async () => {
+  const fetchPartido = async () => {
     try {
       const querySnapshot = await getDocs(collection(firestore, "parties"));
       const partyData = [];
@@ -40,7 +41,12 @@ const PartidosLists = () => {
         <FlatList
           data={data}
           keyExtractor={({ id }) => id}
-          renderItem={({ item }) => <PartidoItem partido={item} />} // Change prop name to partido
+          renderItem={({ item }) => (
+            <View>
+              <PartidoItem partido={item} />
+              <CandidatosLists partyId={item.id} />
+            </View>
+          )}
         />
       )}
     </View>

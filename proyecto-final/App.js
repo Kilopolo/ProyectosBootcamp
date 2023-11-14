@@ -8,7 +8,6 @@ import auth from "@react-native-firebase/auth"
 //locales
 import MenuScreen from "./screens/MenuScreen";
 import CreateUserScreen from "./screens/CreateUserScreen";
-import CandidatosLists from "./screens/CandidatosLists";
 import PartidosLists from "./screens/PartidosList";
 import Login from "./screens/Login";
 import LandingPage from "./screens/LandingPage";
@@ -34,11 +33,6 @@ function MyStack() {
           name="Menu"
           component={MenuScreen}
           options={{ title: "Menu Principal" }}
-        />
-        <Stack.Screen
-          name="CandidatosLists"
-          component={CandidatosLists}
-          options={{ title: "Lista de Candidatos" }}
         />
         <Stack.Screen
           name="PartidosLists"

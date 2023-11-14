@@ -48,7 +48,7 @@ const MenuScreen = ({ navigation }) => {
       </View> */}
       <View style={styles.someContainer}>
         <ScrollView>
-          <View style={styles.buttonContainer}>
+          {/* <View style={styles.buttonContainer}>
             <TouchableWithoutFeedback
               onPress={() => {
                 buttonScale();
@@ -61,7 +61,7 @@ const MenuScreen = ({ navigation }) => {
                 <Text style={styles.buttonText}>Lista de Candidatos</Text>
               </Animated.View>
             </TouchableWithoutFeedback>
-          </View>
+          </View> */}
           <View style={styles.buttonContainer}>
             <TouchableWithoutFeedback
               onPress={() => {
