@@ -70,7 +70,7 @@ const MenuScreen = ({ navigation }) => {
         </View>
         {authenticated ? (
           <View style={styles.otherContainer}>
-            <View style={styles.buttonContainer}>
+            <View style={styles.buttonOtherContainer}>
               <TouchableWithoutFeedback
                 onPress={() => {
                   buttonScale();
@@ -83,7 +83,7 @@ const MenuScreen = ({ navigation }) => {
                     { transform: [{ scale: scaleValue }] },
                   ]}
                 >
-                  <Text style={styles.buttonText}>LandingPage</Text>
+                  <Text style={styles.buttonText}>HOME</Text>
                 </Animated.View>
               </TouchableWithoutFeedback>
             </View>
