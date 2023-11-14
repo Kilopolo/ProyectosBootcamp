@@ -24,17 +24,17 @@ const LandingPage = ({ navigation }) => {
         if (user === null) {
           navigation.navigate("Login");
         } else {
-          const ciudadano = await getCiudadano(user.uid);
+          const citizen = await getCiudadano(user.uid);
 
           const fetchedUserData = {
-            nombre: ciudadano.nombre ,
-            apellido: ciudadano.apellido,
-            dni: ciudadano.dni,
-            direccion: ciudadano.direccion ,
-            fechaNacimiento: ciudadano.fechaNac,
+            "Nombre": citizen.nombre ,
+            "Apellido": citizen.apellido,
+            "DNI": citizen.dni,
+            "Dirección": citizen.direccion ,
+            "Fecha nacimiento": citizen.fechaNac,
           };
 
-          setUserData("UserData",fetchedUserData);
+          setUserData(fetchedUserData);
 
           // Comprobar si el usuario ha votado (ejemplo)
           const userHasVoted = false; // Puedes establecer esto según la lógica de tu aplicación
@@ -82,9 +82,7 @@ const LandingPage = ({ navigation }) => {
   }
 
   return (
-    <ImageBackground
-      source={require("../assets/BKG.png")}
-    >
+  
       <View style={styles.container}>
         <Text style={styles.title}>
           ¡Bienvenido, {getAuth().currentUser.email || "Usuario"}!
@@ -95,10 +93,10 @@ const LandingPage = ({ navigation }) => {
           renderItem={({ item }) => (
             <View style={styles.userInfo}>
               <Text style={styles.label}>{item[0]}</Text>
-              <Text style={styles.value}>{item[1]}</Text>
+              <Text style={styles.label}>{item[1]}</Text>
             </View>
           )}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(id) => id}
         />
         <Text style={styles.subtitle}>Estado del Voto:</Text>
         <Text style={styles.status}>
@@ -110,7 +108,6 @@ const LandingPage = ({ navigation }) => {
           disabled={hasVoted} 
         />
       </View>
-    </ImageBackground>
   );
 };
 
@@ -130,14 +127,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
-    color: "white",
+   
   },
   subtitle: {
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 20,
     marginBottom: 10,
-    color: "white",
+  
   },
   userInfo: {
     flexDirection: "row",
@@ -147,11 +144,10 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "white",
-  },
+  }, 
   value: {
     fontSize: 18,
-    color: "white",
+    
   },
   status: {
     fontSize: 20,
