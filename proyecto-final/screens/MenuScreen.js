@@ -12,6 +12,7 @@ import { collection, getDocs } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
 import BotonNavegacion from "../components/BotonNavegacion";
 import LoremIpsumComponent from "./LoremIpsumComponent";
+import FetchPartidos from "../functions/FetchPartidos";
 
 const MenuScreen = ({ navigation }) => {
 
@@ -31,22 +32,41 @@ const MenuScreen = ({ navigation }) => {
 
 
 
+  // const fetchPartido = async () => {
+  //   try {
+  //     const querySnapshot = await getDocs(collection(firestore, "parties"));
+  //     const partyData = [];
+
+  //     querySnapshot.forEach((doc) => {
+  //       partyData.push({ id: doc.id, ...doc.data() });
+  //     });
+
+  //     await setListaPartidos(partyData);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  
   const fetchPartido = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(firestore, "parties"));
-      const partyData = [];
-
-      querySnapshot.forEach((doc) => {
-        partyData.push({ id: doc.id, ...doc.data() });
+    // Llamada a la función FetchPartidos
+    FetchPartidos()
+      .then((partyData) => {
+        // Manejo de los datos obtenidos
+        console.log("Datos obtenidos:", partyData);
+        // Realiza aquí las operaciones con los datos obtenidos
+        setListaPartidos(partyData);
+      })
+      .catch((error) => {
+        // Manejo de errores
+        console.error("Error:", error);
+      })
+      .finally(() => {
+        // setLoading(false)
       });
-
-      await setListaPartidos(partyData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
   };
+
 
   return (
     <ImageBackground

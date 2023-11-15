@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,18 +6,54 @@ import {
   ScrollView,
   TextInput,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
+import { Button } from "react-native-paper";
+import PartidosLists from "./PartidosList";
+import FetchPartidos from "../functions/FetchPartidos";
 
 const VoteScreen = () => {
+  const [partido, setPartido] = useState("");
   const [pressedButton, setPressedButton] = useState(null);
-
+  const [listaPartidos, setListaPartidos] = useState([]);
   const partidosDisponibles = [
-    { id: 1, nombre: 'PSOE', color: '#FC0303' }, // Color rosa suave
-    { id: 2, nombre: 'Partido Popular', color: '#00DFF9' }, // Color azul claro
+    // { id: 1, nombre: 'PSOE', color: '#FC0303' }, // Color rosa suave
+    // { id: 2, nombre: 'Partido Popular', color: '#00DFF9' }, // Color azul claro
+    // { id: 3, nombre: 'VOX', color: '#FC0303' }, // Color rosa suave
+    listaPartidos.listaPartidos,
   ];
 
-  const handleVote = (partidoId) => {
-    console.log(`Votaste por el partido con ID: ${partidoId}`);
+  useEffect(() => {
+    fetchPartido();
+    console.log("Partidos disponibles:", listaPartidos);
+  }, []);
+
+  const fetchPartido = async () => {
+    // Llamada a la función FetchPartidos
+    FetchPartidos()
+      .then((partyData) => {
+        // Manejo de los datos obtenidos
+        console.log("Datos obtenidos:", partyData);
+        // Realiza aquí las operaciones con los datos obtenidos
+        setListaPartidos(partyData);
+      })
+      .catch((error) => {
+        // Manejo de errores
+        console.error("Error:", error);
+      })
+      .finally(() => {
+        // setLoading(false)
+      });
+  };
+
+  const doVote = async () => {
+    if (listaPartidos === "") {
+      alert("Debes seleccionar un partido");
+      return;
+    }
+  };
+  const handleVote = (n) => {
+    console.log(`Votaste por el partido con ID: ${n}`);
+    setPartido(n);
   };
 
   const handlePressIn = (color) => {
@@ -31,22 +67,22 @@ const VoteScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {partidosDisponibles.map((partido, index) => (
+        {listaPartidos.map((listaPartidos, index) => (
           <TouchableOpacity
-            key={partido.id}
-            style={[
-              styles.partidoButton,
-              {
-                backgroundColor: pressedButton === partido.color ? partido.color : '#EAEAEA',
-                transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
-                marginBottom: index !== partidosDisponibles.length - 1 ? 10 : 0,
-              },
-            ]}
-            onPress={() => handleVote(partido.id)}
-            onPressIn={() => handlePressIn(partido.color)}
+            key={listaPartidos.id}
+            // style={[
+            //   styles.partidoButton,
+            //   {
+            //     backgroundColor: pressedButton === partido.color ? partido.color : '#EAEAEA',
+            //     transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
+            //     marginBottom: index !== partidosDisponibles.length - 1 ? 10 : 0,
+            //   },
+            // ]}
+            onPress={() => handleVote(listaPartidos.nombre)}
+            // onPressIn={() => handlePressIn(partido.color)}
             onPressOut={handlePressOut}
           >
-            <Text>{partido.nombre}</Text>
+            <Text>{listaPartidos.nombre}</Text>
           </TouchableOpacity>
         ))}
         <View style={styles.textAreaContainer}>
@@ -54,7 +90,9 @@ const VoteScreen = () => {
             placeholder="Comentarios adicionales (opcional)"
             multiline
             style={styles.textArea}
+            value={listaPartidos}
           />
+          <Button onPress={doVote} />
         </View>
       </ScrollView>
     </View>
@@ -68,15 +106,15 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   partidoButton: {
     padding: 15,
     borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderWidth: 1,
-    borderColor: 'transparent',
+    borderColor: "transparent",
   },
   textAreaContainer: {
     height: 150,
@@ -85,10 +123,10 @@ const styles = StyleSheet.create({
   textArea: {
     flex: 1,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 5,
     padding: 10,
-    width: '100%',
+    width: "100%",
   },
 });
 
