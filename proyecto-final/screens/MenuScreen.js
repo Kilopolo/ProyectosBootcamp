@@ -49,23 +49,7 @@ const MenuScreen = ({ navigation }) => {
         <View style={stylesMenu.someContainer}>
           <ScrollView>
             <PartidosLists />
-            {/* <View style={styles.buttonContainer}>
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  buttonScale();
-                  navigation.navigate("PartidosLists");
-                }}
-              >
-                <Animated.View
-                  style={[
-                    styles.button,
-                    { transform: [{ scale: scaleValue }] },
-                  ]}
-                >
-                  <Text style={styles.buttonText}>Lista de Partidos</Text>
-                </Animated.View>
-              </TouchableWithoutFeedback>
-            </View> */}
+
           </ScrollView>
         </View>
         {authenticated ? (
