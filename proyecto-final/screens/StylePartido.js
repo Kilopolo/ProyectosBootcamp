@@ -8,7 +8,16 @@ container:{
   marginBottom:15,
   borderColor:'grey',
   borderRadius: 5,
-  padding:5
+  padding:5,
+   //Sombreado
+   shadowColor:  "#544E4D",
+   shadowOffset: {
+     width: 0,
+     height: 8,
+   },
+   shadowOpacity: 0.58,
+   shadowRadius: 16.0,
+   elevation: 20,
 },
 text:{
   fontSize: 14,
