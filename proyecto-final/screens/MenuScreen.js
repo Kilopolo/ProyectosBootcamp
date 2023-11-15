@@ -47,7 +47,6 @@ const MenuScreen = ({ navigation }) => {
       <View style={stylesMenu.allMenuContainer}>
 
         <View style={stylesMenu.someContainer}>
-          <ScrollView>
             <PartidosLists />
             {/* <View style={styles.buttonContainer}>
               <TouchableWithoutFeedback
@@ -66,7 +65,6 @@ const MenuScreen = ({ navigation }) => {
                 </Animated.View>
               </TouchableWithoutFeedback>
             </View> */}
-          </ScrollView>
         </View>
         {authenticated ? (
           <View style={stylesMenu.otherContainer}>

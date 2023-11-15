@@ -1,17 +1,19 @@
 
 import React, { useState, useEffect } from "react";
-
-import { collection, getDocs } from "@firebase/firestore";
-
 import { View, Text, TextInput, Button, StyleSheet,KeyboardAvoidingView, Platform} from 'react-native';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 function Login({ navigation }) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
+// const auth = initializeAuth(Login, {
+//   persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+// });
     const handleLogin = () => {
       const auth = getAuth();
       signInWithEmailAndPassword(auth, email, password)
