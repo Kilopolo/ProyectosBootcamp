@@ -68,10 +68,10 @@ const MenuScreen = ({ navigation }) => {
             </View> */}
           </ScrollView>
         </View>
-        <View style={styles.someContainer}>
+        <View style={stylesMenu.someContainer}>
           <ScrollView>
 
-            <View style={styles.buttonContainer}>
+            <View style={stylesMenu.buttonContainer}>
               <TouchableWithoutFeedback
                 onPress={() => {
                   buttonScale();
@@ -80,11 +80,11 @@ const MenuScreen = ({ navigation }) => {
               >
                 <Animated.View
                   style={[
-                    styles.button,
+                    stylesMenu.button,
                     { transform: [{ scale: scaleValue }] },
                   ]}
                 >
-                  <Text style={styles.buttonText}>Vote</Text>
+                  <Text style={stylesMenu.buttonText}>Vote</Text>
                 </Animated.View>
               </TouchableWithoutFeedback>
             </View>
