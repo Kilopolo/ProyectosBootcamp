@@ -76,23 +76,7 @@ const MenuScreen = ({ navigation }) => {
               <PartidosLists listaPartidos={{ listaPartidos }} />
             )}
 
-            {/* <View style={styles.buttonContainer}>
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  buttonScale();
-                  navigation.navigate("PartidosLists");
-                }}
-              >
-                <Animated.View
-                  style={[
-                    styles.button,
-                    { transform: [{ scale: scaleValue }] },
-                  ]}
-                >
-                  <Text style={styles.buttonText}>Lista de Partidos</Text>
-                </Animated.View>
-              </TouchableWithoutFeedback>
-            </View> */}
+
         </View>
         {authenticated ? (
           <View style={stylesMenu.otherContainer}>

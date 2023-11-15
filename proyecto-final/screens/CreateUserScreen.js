@@ -71,7 +71,8 @@ const CreateUserScreen = ({ navigation }) => {
       const userC = await signup(auth, email, password);
 
       await setUsuarioId(userC.uid);
-      console.log(userC.uid);
+      console.log("userC.uid",userC.uid);
+      console-log("usuarioId",usuarioId); 
       await setState({
         dni: dni,
         nombre: nombre,
@@ -81,7 +82,7 @@ const CreateUserScreen = ({ navigation }) => {
         usuario_id: usuarioId,
         voto,
       });
-      saveNewUser();
+      // saveNewUser();
       console.log(state);
       console.log("Usuario creado correctamente");
       navigation.navigate("Login");
