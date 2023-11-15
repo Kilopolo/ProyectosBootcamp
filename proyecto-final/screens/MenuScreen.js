@@ -70,7 +70,6 @@ const MenuScreen = ({ navigation }) => {
     >
       <View style={stylesMenu.allMenuContainer}>
         <View style={stylesMenu.someContainer}>
-          <ScrollView>
             {isLoading ? (
               <Text>Loading...</Text>
             ) : (
@@ -94,7 +93,6 @@ const MenuScreen = ({ navigation }) => {
                 </Animated.View>
               </TouchableWithoutFeedback>
             </View> */}
-          </ScrollView>
         </View>
         {authenticated ? (
           <View style={stylesMenu.otherContainer}>
