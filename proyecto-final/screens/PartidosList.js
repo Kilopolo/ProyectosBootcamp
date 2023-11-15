@@ -16,7 +16,7 @@ const PartidosLists = ({ listaPartidos }) => {
 
   return (
     <View style={{ flex: 1, padding: 20 }}>
-      <Text>Partidos políticos</Text>
+      <Text style={stylesParty.titulo}>Partidos políticos</Text>
   
       <FlatList
         data={data}

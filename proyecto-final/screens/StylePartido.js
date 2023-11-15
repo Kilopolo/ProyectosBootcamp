@@ -23,6 +23,14 @@ textPartido:{
   marginLeft: 15,
   color: "#544E4D",
   fontWeight: "bold",
+},
+titulo:{
+  fontSize: 18,
+  color: "white",
+  textAlign: "center",
+  textTransform: "uppercase",
+  fontWeight:"bold",
+  marginBottom: 10,
 }
 });
 
