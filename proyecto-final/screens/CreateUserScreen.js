@@ -84,7 +84,7 @@ const CreateUserScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
-    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    behavior={Platform.OS === "android" ? "padding" : "height"}
     style={{ flex: 1 }}
   >
     <View  style={stylesUser.container}>
