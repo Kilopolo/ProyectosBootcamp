@@ -7,27 +7,29 @@ const PartidosLists = ({ listaPartidos }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-
     awaitData();
   }, []);
 
   async function awaitData() {
-    await setData(listaPartidos.listaPartidos);
+    await setData(listaPartidos.listaPartidos); // Utiliza directamente el prop listaPartidos
   }
 
   return (
     <View style={{ flex: 1, padding: 20 }}>
-      <Text>Partidos políticos</Text>
+      <Text style={stylesParty.titulo}>Partidos políticos</Text>
   
-      {data.map((item, index) => (
-        <View style={stylesParty.container}>
-          <Text>{item.nombre}</Text> 
-          <CandidatosLists party_id={item.id} />
-          <Text>{item.sede}</Text>
-          <Text>{item.votos}</Text>
-         
-        </View>
-      ))}
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id.toString()} // Convierte a cadena para la clave única
+        renderItem={({ item }) => (
+          <View style={stylesParty.container}>
+            <Text style={stylesParty.textPartido}>{item.nombre}</Text>
+            <CandidatosLists party_id={item.id} />
+            <Text style={stylesParty.textPartido}>{item.sede}</Text>
+            <Text style={stylesParty.textPartido}>Total de votos: {item.votos}</Text>
+          </View>
+        )}
+      />
     </View>
   );
 };

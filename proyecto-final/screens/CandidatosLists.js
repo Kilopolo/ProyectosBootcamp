@@ -3,6 +3,7 @@ import { View, Text, FlatList,Image } from "react-native";
 import { collection, getDocs, getDoc ,doc,query, where } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
 import stylesMenu from "./StyleMenuScreen";
+import stylesParty from "./StylePartido";
 
 const CandidatosLists = ({ party_id }) => {
   const [data, setData] = useState([]);
@@ -67,7 +68,8 @@ const CandidatosLists = ({ party_id }) => {
   
       if (docSnapshot.exists()) {
         const ciudadano = docSnapshot.data();
-        return ciudadano.nombre || "";
+        const nombrecompleto=ciudadano.nombre +" "+ ciudadano.apellido;
+        return nombrecompleto || "";
       } else {
         return "";
       }
@@ -80,7 +82,7 @@ const CandidatosLists = ({ party_id }) => {
   // console.log("Component rendered with data:", data);
 
   return (
-    <View style={{ flex: 1, padding: 24 }}>
+    <View style={{ flex: 1 }}>
       {isLoading ? (
          <View style={stylesMenu.loadingContainer}>
          <Image
@@ -97,7 +99,7 @@ const CandidatosLists = ({ party_id }) => {
             return (
               <View>
                 {/*<Text>{`Partido: ${item.partyName}`}</Text>*/}
-                <Text>{`Candidato: ${item.citizenName}`}</Text>
+                <Text style={stylesParty.text}>{item.citizenName}</Text>
               </View>
             );
           }}
