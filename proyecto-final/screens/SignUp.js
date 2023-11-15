@@ -14,7 +14,7 @@ import stylesUser from "./StyleCreateUserScreen";
 import { ScrollView } from "react-native";
 // import database from '@react-native-firebase/database';
 
-const CreateUserScreen = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [dni, setDNI] = useState("");
@@ -50,7 +50,7 @@ const CreateUserScreen = ({ navigation }) => {
     }
   };
 
-  const signup = async (auth, email, password) => {
+  const signupusr = async (auth, email, password) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -68,7 +68,7 @@ const CreateUserScreen = ({ navigation }) => {
   const handleSignUp = async () => {
     try {
       const auth = getAuth();
-      const userC = await signup(auth, email, password);
+      const userC = await signupusr(auth, email, password);
 
       await setUsuarioId(userC.uid);
       console.log("userC.uid",userC.uid);
@@ -193,4 +193,4 @@ const CreateUserScreen = ({ navigation }) => {
   );
 };
 
-export default CreateUserScreen;
+export default SignUp;

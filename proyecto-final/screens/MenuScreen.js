@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   ScrollView,
   View,
-  Image,
   Text,
-  TouchableWithoutFeedback,
-  Animated,
   ImageBackground,
 } from "react-native";
 import stylesMenu from "./StyleMenuScreen";
@@ -14,11 +11,10 @@ import PartidosLists from "./PartidosList";
 import { collection, getDocs } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
 import BotonNavegacion from "../components/BotonNavegacion";
-import SplashScreen from "./SplashScreen";
 import LoremIpsumComponent from "./LoremIpsumComponent";
 
 const MenuScreen = ({ navigation }) => {
-  const [scaleValue] = useState(new Animated.Value(1));
+
   const [authenticated, setAuhtenticated] = useState(false);
   const [listaPartidos, setListaPartidos] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -33,20 +29,7 @@ const MenuScreen = ({ navigation }) => {
     }
   }, []);
 
-  const buttonScale = () => {
-    Animated.sequence([
-      Animated.timing(scaleValue, {
-        toValue: 0.8,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-      Animated.timing(scaleValue, {
-        toValue: 1,
-        duration: 100,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
+
 
   const fetchPartido = async () => {
     try {
@@ -104,8 +87,8 @@ const MenuScreen = ({ navigation }) => {
             <View style={stylesMenu.otherContainerBottom}>
               <BotonNavegacion
                 navigation={navigation}
-                navigateTo={"CreateUserScreen"}
-                text={"SingUp"}
+                navigateTo={"SignUp"}
+                text={"SignUp"}
               />
               <BotonNavegacion
                 navigation={navigation}

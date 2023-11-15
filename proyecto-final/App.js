@@ -7,7 +7,7 @@ import auth from "@react-native-firebase/auth";
 
 //locales
 import MenuScreen from "./screens/MenuScreen";
-import CreateUserScreen from "./screens/CreateUserScreen";
+import SignUp from "./screens/SignUp";
 import PartidosLists from "./screens/PartidosList";
 import Login from "./screens/Login";
 import LandingPage from "./screens/LandingPage";
@@ -50,8 +50,8 @@ function MyStack() {
         options={{ title: "Lista de Partidos" }}
       />
       <Stack.Screen
-        name="CreateUserScreen"
-        component={CreateUserScreen}
+        name="SignUp"
+        component={SignUp}
         options={{ title: "SingUp" }}
       />
       <Stack.Screen
