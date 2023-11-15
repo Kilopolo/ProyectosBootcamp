@@ -77,7 +77,7 @@ const LandingPage = ({ navigation }) => {
   };
 
   const handleVoteButton = () => {
-    console.log("Votar");
+    navigation.navigate('VoteScreen');
   };
 
   if (loading) {
