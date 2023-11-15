@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { useEffect, useState } from 'react';;
+import { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import auth from "@react-native-firebase/auth"
+import auth from "@react-native-firebase/auth";
 
 //locales
 import MenuScreen from "./screens/MenuScreen";
@@ -12,7 +12,7 @@ import PartidosLists from "./screens/PartidosList";
 import Login from "./screens/Login";
 import LandingPage from "./screens/LandingPage";
 import SplashScreen from "./screens/SplashScreen";
-
+import VoteScreen from "./screens/VoteScreen";
 
 // const Stack = createNativeStackNavigator();
 
@@ -39,9 +39,9 @@ function MyStack() {
         component={MenuScreen}
         options={({ navigation }) => ({
           title: "Menu Principal",
-          headerLeft: null, 
-          gestureEnabled: false, 
-          headerTitleAlign: 'center',
+          headerLeft: null,
+          gestureEnabled: false,
+          headerTitleAlign: "center",
         })}
       />
       <Stack.Screen
@@ -63,6 +63,11 @@ function MyStack() {
         name="LandingPage"
         component={LandingPage}
         options={{ title: "LandingPage" }}
+      />
+      <Stack.Screen
+        name="VoteScreen"
+        component={VoteScreen} 
+        options={{ title: "VOTO", headerTitleAlign: "center" }}
       />
     </Stack.Navigator>
   );
