@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
-export default function SplashScreen({ navigation }) {
+export default function SplashScreen({ navigation, isLoading }) {
   const [counter, setCounter] = useState(1);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCounter(prevCounter => {
-        if (prevCounter === 1) {
+        if (prevCounter === 1 && !isLoading) {
           clearInterval(interval);
           navigation.navigate('Menu'); 
         }
@@ -16,7 +15,7 @@ export default function SplashScreen({ navigation }) {
     }, 1000);
 
     return () => clearInterval(interval); 
-  }, [navigation]);
+  }, [isLoading, navigation]);
 
   return (
     <ImageBackground source={require('../assets/splash_image.png')} style={styles.background}>
@@ -25,7 +24,7 @@ export default function SplashScreen({ navigation }) {
           <Text style={styles.title}>Bienvenido</Text>
         </View>
         <Text style={styles.counter}>
-          En {counter} segundos accederás a tu portal político favorito
+          Accediendo a tu portal político favorito...
         </Text>
       </View>
     </ImageBackground>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   ScrollView,
   View,
+  Image,
   Text,
   TouchableWithoutFeedback,
   Animated,
@@ -12,6 +13,7 @@ import { getAuth } from "firebase/auth";
 import PartidosLists from "./PartidosList";
 import { collection, getDocs } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
+import SplashScreen from "./SplashScreen";
 
 const MenuScreen = ({ navigation }) => {
   const [scaleValue] = useState(new Animated.Value(1));
@@ -71,28 +73,11 @@ const MenuScreen = ({ navigation }) => {
       <View style={stylesMenu.allMenuContainer}>
         <View style={stylesMenu.someContainer}>
             {isLoading ? (
-              <Text>Loading...</Text>
+                null
             ) : (
               <PartidosLists listaPartidos={{ listaPartidos }} />
             )}
 
-            {/* <View style={styles.buttonContainer}>
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  buttonScale();
-                  navigation.navigate("PartidosLists");
-                }}
-              >
-                <Animated.View
-                  style={[
-                    styles.button,
-                    { transform: [{ scale: scaleValue }] },
-                  ]}
-                >
-                  <Text style={styles.buttonText}>Lista de Partidos</Text>
-                </Animated.View>
-              </TouchableWithoutFeedback>
-            </View> */}
         </View>
         {authenticated ? (
           <View style={stylesMenu.otherContainer}>

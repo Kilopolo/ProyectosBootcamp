@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList,Image } from "react-native";
 import { collection, getDocs, getDoc ,doc,query, where } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
+import stylesMenu from "./StyleMenuScreen";
 
 const CandidatosLists = ({ party_id }) => {
   const [data, setData] = useState([]);
@@ -81,7 +82,12 @@ const CandidatosLists = ({ party_id }) => {
   return (
     <View style={{ flex: 1, padding: 24 }}>
       {isLoading ? (
-        <Text>Loading...</Text>
+         <View style={stylesMenu.loadingContainer}>
+         <Image
+           source={require('../assets/loading.gif')} // Ruta de tu archivo loading.gif
+           style={stylesMenu.loadingGif}
+         />
+       </View>
       ) : (
         <FlatList
           data={data}
