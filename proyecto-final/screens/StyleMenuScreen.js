@@ -12,16 +12,7 @@ const stylesMenu = StyleSheet.create({
     padding: 10,
     margin: 10,
   },
-  buttonOtherContainer:{
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    borderColor: "grey",
-    borderRadius: 5,
-    // padding: 10,
-    // margin: 10,
-  },
+
   textButton: {
     fontSize: 20,
     marginBottom: 10,
