@@ -33,7 +33,7 @@ const CandidatosLists = ({ party_id }) => {
         });
       }
 
-      console.log("Fetched data:", aplicantData);
+      // console.log("Fetched data:", aplicantData);
       setData(aplicantData);
       setLoading(false);
     } catch (error) {
@@ -76,7 +76,7 @@ const CandidatosLists = ({ party_id }) => {
     }
   };
 
-  console.log("Component rendered with data:", data);
+  // console.log("Component rendered with data:", data);
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
@@ -87,7 +87,7 @@ const CandidatosLists = ({ party_id }) => {
           data={data}
           keyExtractor={({ id }) => id}
           renderItem={({ item }) => {
-            console.log("Rendering Candidato Item with data:", item);
+            // console.log("Rendering Candidato Item with data:", item);
             return (
               <View>
                 {/*<Text>{`Partido: ${item.partyName}`}</Text>*/}
