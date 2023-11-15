@@ -21,7 +21,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Splash"
+      // initialRouteName=""
       screenOptions={{
         headerStyle: { backgroundColor: "#3498db" },
         headerTintColor: "#fff",
