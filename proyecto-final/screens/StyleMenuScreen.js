@@ -71,6 +71,18 @@ const stylesMenu = StyleSheet.create({
     // alignItems: "center",
     // justifyContent: "center",
   },
+
+  someContainerBottom : {
+    flex: 5,
+    flexDirection: "column",
+    justifyContent: "flex-start",
+  },
+  someContainerBottomButton: {
+    flex: 1,
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   allMenuContainer: {
     flex: 1,
 

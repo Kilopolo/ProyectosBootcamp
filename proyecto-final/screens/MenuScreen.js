@@ -15,6 +15,7 @@ import { collection, getDocs } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
 import BotonNavegacion from "../components/BotonNavegacion";
 import SplashScreen from "./SplashScreen";
+import LoremIpsumComponent from "./LoremIpsumComponent";
 
 const MenuScreen = ({ navigation }) => {
   const [scaleValue] = useState(new Animated.Value(1));
@@ -71,12 +72,21 @@ const MenuScreen = ({ navigation }) => {
     >
       <View style={stylesMenu.allMenuContainer}>
         <View style={stylesMenu.someContainer}>
-            {isLoading ? (
-                null
-            ) : (
-              <PartidosLists listaPartidos={{ listaPartidos }} />
-            )}
-
+          {isLoading ? null : (
+            <View style={stylesMenu.someContainerBottom}>
+              <ScrollView>
+                <PartidosLists listaPartidos={{ listaPartidos }} />
+                <View style={stylesMenu.someContainerBottomButton}>
+                  <BotonNavegacion
+                    navigation={navigation}
+                    navigateTo={"VoteScreen"}
+                    text={"VOTAR"}
+                  />
+                </View>
+                <LoremIpsumComponent />
+              </ScrollView>
+            </View>
+          )}
         </View>
         {authenticated ? (
           <View style={stylesMenu.otherContainer}>

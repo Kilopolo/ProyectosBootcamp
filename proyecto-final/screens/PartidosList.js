@@ -15,7 +15,7 @@ const PartidosLists = ({ listaPartidos }) => {
   }
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
+    <View style={stylesParty.todoAfuera}>
       <Text style={stylesParty.titulo}>Partidos políticos</Text>
   
       <FlatList

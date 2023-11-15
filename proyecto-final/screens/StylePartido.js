@@ -32,7 +32,16 @@ titulo:{
   textTransform: "uppercase",
   fontWeight:"bold",
   marginBottom: 10,
-}
+},
+todoAfuera:{
+  // flex: 1,
+  margin: 10,
+  padding: 10,
+  borderWidth: 1,
+  borderRadius: 10,
+  borderColor: 'black',
+  backgroundColor: 'rgba(255,255,255,0.1)',
+},
 });
 
 export default stylesParty;
