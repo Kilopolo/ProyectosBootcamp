@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, Text, FlatList,Image } from "react-native";
 import { collection, getDocs, getDoc ,doc,query, where } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
-import stylesMenu from "./StyleMenuScreen";
-import stylesParty from "./StylePartido";
+import stylesMenu from "../styles/StyleMenuScreen";
+import stylesParty from "../styles/StylePartido";
 
 const CandidatosLists = ({ party_id }) => {
   const [data, setData] = useState([]);

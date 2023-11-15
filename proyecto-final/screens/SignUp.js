@@ -10,7 +10,7 @@ import {
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { firestore } from "../database/firebase";
 import { addDoc, collection } from "@firebase/firestore";
-import stylesUser from "./StyleCreateUserScreen";
+import stylesSignUp from "../styles/StyleSignUp";
 import { ScrollView } from "react-native";
 // import database from '@react-native-firebase/database';
 
@@ -97,10 +97,10 @@ const SignUp = ({ navigation }) => {
         behavior={Platform.OS === "android" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
-        <View style={stylesUser.container}>
-          <Text style={stylesUser.label}>Email:</Text>
+        <View style={stylesSignUp.container}>
+          <Text style={stylesSignUp.label}>Email:</Text>
           <TextInput
-            style={stylesUser.input}
+            style={stylesSignUp.input}
             value={email}
             onChangeText={(text) => {
               setEmail(text);
@@ -108,9 +108,9 @@ const SignUp = ({ navigation }) => {
             }}
           />
 
-          <Text style={stylesUser.label}>Contraseña:</Text>
+          <Text style={stylesSignUp.label}>Contraseña:</Text>
           <TextInput
-            style={stylesUser.input}
+            style={stylesSignUp.input}
             secureTextEntry
             value={password}
             onChangeText={(text) => {
@@ -119,9 +119,9 @@ const SignUp = ({ navigation }) => {
             }}
           />
 
-          <Text style={stylesUser.label}>DNI:</Text>
+          <Text style={stylesSignUp.label}>DNI:</Text>
           <TextInput
-            style={stylesUser.input}
+            style={stylesSignUp.input}
             value={dni}
             onChangeText={(text) => {
               setDNI(text);
@@ -131,9 +131,9 @@ const SignUp = ({ navigation }) => {
             }}
           />
 
-          <Text style={stylesUser.label}>Nombre:</Text>
+          <Text style={stylesSignUp.label}>Nombre:</Text>
           <TextInput
-            style={stylesUser.input}
+            style={stylesSignUp.input}
             value={nombre}
             onChangeText={(text) => {
               setNombre(text);
@@ -143,9 +143,9 @@ const SignUp = ({ navigation }) => {
             }}
           />
 
-          <Text style={stylesUser.label}>Apellido:</Text>
+          <Text style={stylesSignUp.label}>Apellido:</Text>
           <TextInput
-            style={stylesUser.input}
+            style={stylesSignUp.input}
             value={apellido}
             onChangeText={(text) => {
               setApellido(text);
@@ -155,9 +155,9 @@ const SignUp = ({ navigation }) => {
             }}
           />
 
-          <Text style={stylesUser.label}>Fecha de Nacimiento:</Text>
+          <Text style={stylesSignUp.label}>Fecha de Nacimiento:</Text>
           <TextInput
-            style={stylesUser.input}
+            style={stylesSignUp.input}
             value={fechaNac}
             onChangeText={(text) => {
               setFechaNac(text);
@@ -167,9 +167,9 @@ const SignUp = ({ navigation }) => {
             }}
           />
 
-          <Text style={stylesUser.label}>Dirección:</Text>
+          <Text style={stylesSignUp.label}>Dirección:</Text>
           <TextInput
-            style={stylesUser.input}
+            style={stylesSignUp.input}
             value={direccion}
             onChangeText={(text) => {
               setDireccion(text);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList } from "react-native";
 import CandidatosLists from "./CandidatosLists";
-import stylesParty from "./StylePartido";
+import stylesParty from "../styles/StylePartido";
 
 const PartidosLists = ({ listaPartidos }) => {
   const [data, setData] = useState([]);

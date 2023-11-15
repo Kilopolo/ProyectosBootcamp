@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, FlatList, Button } from "react-native";
 import { getAuth } from "firebase/auth";
 import { firestore } from "../database/firebase";
 import { collection, where, query, getDocs } from "@firebase/firestore";
-import styles from "./StyleLandingPage";
+import styles from "../styles/StyleLandingPage";
 
 const LandingPage = ({ navigation }) => {
   const [userData, setUserData] = useState({});
@@ -85,7 +85,7 @@ const LandingPage = ({ navigation }) => {
     // >
     <View style={styles.container}>
       <Text style={styles.title}>
-        ¡Bienvenido, {getAuth().currentUser.email || "Usuario"}!
+        ¡Bienvenido, {getAuth().currentUser===null?"":getAuth().currentUser.email || "Usuario"}!
       </Text>
       <Text style={styles.subtitle}>Datos del Usuario:</Text>
       <FlatList

@@ -5,7 +5,7 @@ import {
   Text,
   ImageBackground,
 } from "react-native";
-import stylesMenu from "./StyleMenuScreen";
+import stylesMenu from "../styles/StyleMenuScreen";
 import { getAuth } from "firebase/auth";
 import PartidosLists from "./PartidosList";
 import { collection, getDocs } from "@firebase/firestore";
@@ -65,6 +65,11 @@ const MenuScreen = ({ navigation }) => {
                     navigateTo={"VoteScreen"}
                     text={"VOTAR"}
                   />
+                              <BotonNavegacion
+              navigation={navigation}
+              navigateTo={"LandingPage"}
+              text={"HOME"}
+            />
                 </View>
                 <LoremIpsumComponent />
               </ScrollView>
