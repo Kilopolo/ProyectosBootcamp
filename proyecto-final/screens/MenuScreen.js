@@ -68,6 +68,28 @@ const MenuScreen = ({ navigation }) => {
             </View> */}
           </ScrollView>
         </View>
+        <View style={styles.someContainer}>
+          <ScrollView>
+
+            <View style={styles.buttonContainer}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  buttonScale();
+                  navigation.navigate("VoteScreen");
+                }}
+              >
+                <Animated.View
+                  style={[
+                    styles.button,
+                    { transform: [{ scale: scaleValue }] },
+                  ]}
+                >
+                  <Text style={styles.buttonText}>Vote</Text>
+                </Animated.View>
+              </TouchableWithoutFeedback>
+            </View>
+          </ScrollView>
+        </View>
         {authenticated ? (
           <View style={stylesMenu.otherContainer}>
             <View style={stylesMenu.buttonOtherContainer}>

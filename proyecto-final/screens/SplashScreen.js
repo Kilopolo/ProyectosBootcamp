@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 export default function SplashScreen({ navigation }) {
-  const [counter, setCounter] = useState(5);
+  const [counter, setCounter] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {

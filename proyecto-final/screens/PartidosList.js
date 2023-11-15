@@ -22,7 +22,7 @@ const PartidosLists = () => {
         partyData.push({ id: doc.id, ...doc.data() });
       });
 
-      console.log("Fetched data:", partyData);
+      // console.log("Fetched data:", partyData);
 
       setData(partyData);
     } catch (error) {
@@ -32,7 +32,7 @@ const PartidosLists = () => {
     }
   };
 
-  console.log("Component rendered with data:", data);
+  // console.log("Component rendered with data:", data);
   return (
     <View style={{ flex: 1, padding: 20 }}>
       {isLoading ? (
