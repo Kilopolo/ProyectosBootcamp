@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Button,KeyboardAvoidingView, Platform } from "react-native";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { firestore } from "../database/firebase";
 import { addDoc, collection } from "@firebase/firestore";
+import stylesUser from "./StyleCreateUserScreen";
 // import database from '@react-native-firebase/database';
 
 const CreateUserScreen = ({ navigation }) => {
@@ -13,7 +14,7 @@ const CreateUserScreen = ({ navigation }) => {
   const [apellido, setApellido] = useState("");
   const [fechaNac, setFechaNac] = useState("");
   const [direccion, setDireccion] = useState("");
-  const [Voto, setVoto] = useState(false);
+  const [voto, setVoto] = useState(false);
   const [usuarioId, setUsuarioId] = useState("");
 
   const [state, setState] = useState({
@@ -23,6 +24,7 @@ const CreateUserScreen = ({ navigation }) => {
     fechaNac: fechaNac,
     direccion: direccion,
     usuario_id: usuarioId,
+    voto,
   });
 
   const saveNewUser = async () => {
@@ -69,7 +71,7 @@ const CreateUserScreen = ({ navigation }) => {
         fechaNac: fechaNac,
         direccion: direccion,
         usuario_id: usuarioId,
-        voto: false,
+        voto,
       });
       saveNewUser();
       console.log(state);
@@ -81,9 +83,13 @@ const CreateUserScreen = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Email:</Text>
-      <TextInput
+    <KeyboardAvoidingView
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    style={{ flex: 1 }}
+  >
+    <View  style={stylesUser.container}>
+      <Text style={stylesUser.label}>Email:</Text>
+      <TextInput style={stylesUser.input}
         value={email}
         onChangeText={(text) => {
           setEmail(text);
@@ -91,8 +97,8 @@ const CreateUserScreen = ({ navigation }) => {
         }}
       />
 
-      <Text>Contraseña:</Text>
-      <TextInput
+      <Text style={stylesUser.label}>Contraseña:</Text>
+      <TextInput  style={stylesUser.input}
         secureTextEntry
         value={password}
         onChangeText={(text) => {
@@ -101,8 +107,8 @@ const CreateUserScreen = ({ navigation }) => {
         }}
       />
 
-      <Text>DNI:</Text>
-      <TextInput
+      <Text style={stylesUser.label}>DNI:</Text>
+      <TextInput  style={stylesUser.input}
         value={dni}
         onChangeText={(text) => {
           setDNI(text);
@@ -112,8 +118,8 @@ const CreateUserScreen = ({ navigation }) => {
         }}
       />
 
-      <Text>Nombre:</Text>
-      <TextInput
+      <Text style={stylesUser.label}>Nombre:</Text>
+      <TextInput  style={stylesUser.input}
         value={nombre}
         onChangeText={(text) => {
           setNombre(text);
@@ -123,8 +129,8 @@ const CreateUserScreen = ({ navigation }) => {
         }}
       />
 
-      <Text>Apellido:</Text>
-      <TextInput
+      <Text style={stylesUser.label}>Apellido:</Text>
+      <TextInput  style={stylesUser.input}
         value={apellido}
         onChangeText={(text) => {
           setApellido(text);
@@ -134,8 +140,8 @@ const CreateUserScreen = ({ navigation }) => {
         }}
       />
 
-      <Text>Fecha de Nacimiento:</Text>
-      <TextInput
+      <Text style={stylesUser.label}>Fecha de Nacimiento:</Text>
+      <TextInput  style={stylesUser.input}
         value={fechaNac}
         onChangeText={(text) => {
           setFechaNac(text);
@@ -145,8 +151,8 @@ const CreateUserScreen = ({ navigation }) => {
         }}
       />
 
-      <Text>Dirección:</Text>
-      <TextInput
+      <Text style={stylesUser.label}>Dirección:</Text>
+      <TextInput  style={stylesUser.input}
         value={direccion}
         onChangeText={(text) => {
           setDireccion(text);
@@ -155,9 +161,17 @@ const CreateUserScreen = ({ navigation }) => {
           // console.log(state);
         }}
       />
+      <TextInput 
+        style={{ display: "none" }}
+        value={voto.toString()}
+        onChangeText={(text) => {
+          setVoto(text === "true");
+        }}
+      />
 
       <Button title="Crear Usuario" onPress={handleSignUp} />
     </View>
+    </KeyboardAvoidingView>
   );
 };
 

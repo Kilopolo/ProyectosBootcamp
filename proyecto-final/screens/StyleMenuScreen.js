@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-const styles = StyleSheet.create({
+const stylesMenu = StyleSheet.create({
 
   buttonContainer: {
     flex: 1,
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
   },
   otherContainerTop: {
     flex: 1,
-
     textAlign: "center",
     flexWrap: "wrap",
     alignItems: "center",
@@ -87,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default stylesMenu;
