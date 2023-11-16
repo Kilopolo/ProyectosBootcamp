@@ -19,7 +19,7 @@ import UpdateVotoUsuario from "../functions/UpdateVotoUsuario";
 // Importa la función FetchCitizenById
 import FetchCitizenById from "../functions/FetchCitizenById";
 
-const VoteScreen = () => {
+const VoteScreen = ({}) => {
   const [partido, setPartido] = useState("");
   const [pressedButton, setPressedButton] = useState(null);
   const [listaPartidos, setListaPartidos] = useState([]);
@@ -40,8 +40,7 @@ const VoteScreen = () => {
     setUser(getAuth().currentUser);
 
 
-    // const tmp = fetchCitizenByUserUID(getAuth().currentUser.uid);
-    // console.log("ciudadano",tmp);
+
 
 
   }, [partido.votos]);
@@ -138,8 +137,8 @@ const VoteScreen = () => {
     setVotado(true);
 
     //recuperamos los datos de los partidos
-    const tmp = await fetchCitizenByUserUID(user.uid);
-    console.log("ciudadano",tmp);
+    // const tmp = await fetchCitizenByUserUID(user.uid);
+    // console.log("ciudadano",tmp);
     //actualizamos todo en la vista si hace falta
   };
   const colores = ['#0000FF', '#008000', '#800080', '#FF0000'];
@@ -190,7 +189,7 @@ const VoteScreen = () => {
             style={styles.textArea}
             value={partido.nombre}
           />
-          <Text>{partido.votos}</Text>
+          {/* <Text>{partido.votos}</Text> */}
             {votado? null : (
               <Button onPress={doVote}>Confirmar Voto</Button>
             )}

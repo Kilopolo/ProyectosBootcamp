@@ -1,5 +1,5 @@
 import { firestore } from "../database/firebase";
-import { doc, getDoc } from "@firebase/firestore";
+import { doc, getDoc, updateDoc, collection, query, where, getDocs } from "firebase/firestore";
 
 const FetchCitizenById = async (citizenId) => {
   try {
