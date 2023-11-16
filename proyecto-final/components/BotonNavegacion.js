@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         borderWidth: 1,
-        borderColor: "grey",
-        backgroundColor: "white",
+        borderColor: "#A59E8C",
+        backgroundColor: "#DCC48E",
         borderRadius: 5,
         padding: 10,
         margin: 10,
@@ -57,8 +57,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10,
         textAlign: "center",
-        color: "#544E4D",
+        color: "#FFFCF7",
         fontWeight: "bold",
+        
       },
     buttonOtherContainer:{
         flex: 1,
