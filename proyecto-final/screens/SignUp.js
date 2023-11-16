@@ -35,14 +35,15 @@ const SignUp = ({ navigation }) => {
     voto,
   });
 
-  const saveNewUser = async () => {
+  const saveNewUser = async (usuarioActual) => {
     if (state.dni === "") {
       alert("Por favor ingrese un dni");
     } else {
       const ref = collection(firestore, "citizens");
       try {
-        await addDoc(ref, state);
+        await addDoc(ref, usuarioActual);
         console.log("Ciudadano creado correctamente");
+        console.log("Datos del usuario:",usuarioActual)
         alert("Usuario guardado");
       } catch (err) {
         console.error(err);
@@ -71,8 +72,16 @@ const SignUp = ({ navigation }) => {
       const userC = await signupusr(auth, email, password);
 
       await setUsuarioId(userC.uid);
-      console.log("userC.uid",userC.uid);
-      console-log("usuarioId",usuarioId); 
+      let usuarioActual = {
+        dni: state.dni,
+        nombre: state.nombre,
+        apellido: state.apellido,
+        fechaNac: state.fechaNac,
+        direccion: state.direccion,
+        usuario_id: userC.uid,
+        voto: state.voto,
+      };
+      // ;
       await setState({
         dni: dni,
         nombre: nombre,
@@ -82,9 +91,8 @@ const SignUp = ({ navigation }) => {
         usuario_id: usuarioId,
         voto,
       });
-      // saveNewUser();
-      console.log(state);
       console.log("Usuario creado correctamente");
+      saveNewUser(usuarioActual);
       navigation.navigate("Login");
     } catch (error) {
       console.error("Error al crear el usuario", error);
