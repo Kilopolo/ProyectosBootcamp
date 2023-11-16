@@ -1,20 +1,22 @@
 import { firestore } from "../database/firebase";
-import { doc, updateDoc } from "@firebase/firestore";
+import { collection, get, getDocs, getDoc ,doc,query, where,updateDoc } from "@firebase/firestore";
 
 const UpdateVotos = async (partyId, newVotes) => {
   try {
-    const partyRef = doc(firestore, "parties", partyId);
+    // const partyRef = doc(firestore, "parties", partyId);
+    const docRef = doc(collection(firestore, "parties"), partyId);
+    const docSnapshot = await getDoc(docRef);
 
     // Obtiene los datos del partido específico
-    const partySnapshot = await partyRef.get();
+    // const partySnapshot = await docRef.get();
 
-    if (partySnapshot.exists()) {
+    if (docSnapshot.exists()) {
       // Obtiene el valor actual de votos y actualiza con los nuevos votos
-      const currentVotes = partySnapshot.data().votos || 0;
-      const updatedVotes = currentVotes + newVotes;
+      const currentVotes = docSnapshot.data().votos || 0;
+      const updatedVotes = newVotes;
 
       // Actualiza el campo 'votos' en Firestore
-      await updateDoc(partyRef, { votos: updatedVotes });
+      await updateDoc(docRef, { votos: updatedVotes });
 
       console.log(`Votos actualizados para el partido con ID ${partyId}`);
     } else {
