@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  ScrollView,
-  View,
-  Text,
-  ImageBackground,
-} from "react-native";
+import { ScrollView, View, Text, ImageBackground } from "react-native";
 import stylesMenu from "../styles/StyleMenuScreen";
 import { getAuth } from "firebase/auth";
 import { collection, getDocs } from "@firebase/firestore";
@@ -13,9 +8,10 @@ import BotonNavegacion from "../components/BotonNavegacion";
 import LoremIpsumComponent from "./LoremIpsumComponent";
 import FetchPartidos from "../functions/FetchPartidos";
 import { BarChart } from "react-native-chart-kit";
+import PartidosLists from "./PartidosList";
+import stylesParty from "../styles/StylePartido";
 
 const MenuScreen = ({ navigation }) => {
-
   const [authenticated, setAuhtenticated] = useState(false);
   const [listaPartidos, setListaPartidos] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -51,8 +47,8 @@ const MenuScreen = ({ navigation }) => {
 
     const chartConfig = {
       backgroundColor: "white",
-      backgroundGradientFrom: "#F8FFDF",
-      backgroundGradientTo: "white",
+      backgroundGradientFrom: "white",
+      backgroundGradientTo: "#FEF8E8",
       decimalPlaces: 0,
       color: (opacity = 0) => ` rgba(000, 000, 000, ${opacity})`,
       style: {
@@ -61,80 +57,71 @@ const MenuScreen = ({ navigation }) => {
     };
 
     return (
-      <BarChart
-        data={{
-          labels: labels,
-          datasets: [
-            {
-              data: data,
-            },
-          ],
-        }}
-        width={300}
-        height={200}
-        chartConfig={chartConfig}
-        fromZero={true}
-        showValuesOnTopOfBars={true}
-        style={stylesMenu.graf}     />
+      <View>
+        <Text style={stylesParty.titulo}>Resultados</Text>
+        <BarChart
+          data={{
+            labels: labels,
+            datasets: [
+              {
+                data: data,
+              },
+            ],
+          }}
+          width={300}
+          height={200}
+          chartConfig={chartConfig}
+          fromZero={true}
+          showValuesOnTopOfBars={true}
+          style={stylesMenu.graf}
+        />
+      </View>
     );
   };
 
   return (
-    
-      <View style={stylesMenu.allMenuContainer}>
-        <View style={stylesMenu.someContainer}>
-          {isLoading ? null : (
-            <View style={stylesMenu.someContainerBottom}>
-              <ScrollView>
-               <View >
-                {renderBarChart()}
-                </View>
-                <View style={stylesMenu.someContainerBottomButton}>
-                  <BotonNavegacion
-                    navigation={navigation}
-                    navigateTo={"VoteScreen"}
-                    text={"VOTAR"}
-                  />
-                  <BotonNavegacion
-                    navigation={navigation}
-                    navigateTo={"LandingPage"}
-                    text={"HOME"}
-                  />
-                </View>
-                <LoremIpsumComponent />
-              </ScrollView>
-            </View>
-          )}
-        </View>
-        {authenticated ? (
-          <View style={stylesMenu.otherContainer}>
-            <BotonNavegacion
-              navigation={navigation}
-              navigateTo={"LandingPage"}
-              text={"HOME"}
-            />
-          </View>
-        ) : (
-          <View style={stylesMenu.otherContainer}>
-            <View style={stylesMenu.otherContainerTop}>
-              <Text style={stylesMenu.text}>No autenticado</Text>
-            </View>
-            <View style={stylesMenu.otherContainerBottom}>
-              <BotonNavegacion
-                navigation={navigation}
-                navigateTo={"SignUp"}
-                text={"SignUp"}
-              />
-              <BotonNavegacion
-                navigation={navigation}
-                navigateTo={"Login"}
-                text={"Login"}
-              />
-            </View>
+    <View style={stylesMenu.allMenuContainer}>
+      <View style={stylesMenu.someContainer}>
+        {isLoading ? null : (
+          <View style={stylesMenu.someContainerBottom}>
+            <ScrollView>
+              <View>{renderBarChart()}</View>
+              <View>
+                <PartidosLists listaPartidos={{ listaPartidos }} />
+              </View>
+              <LoremIpsumComponent />
+            </ScrollView>
           </View>
         )}
       </View>
-   
+      {authenticated ? (
+        <View style={stylesMenu.otherContainer}>
+          <BotonNavegacion
+            navigation={navigation}
+            navigateTo={"LandingPage"}
+            text={"HOME"}
+          />
+        </View>
+      ) : (
+        <View style={stylesMenu.otherContainer}>
+          <View style={stylesMenu.otherContainerTop}>
+            <Text style={stylesMenu.text}>No autenticado</Text>
+          </View>
+          <View style={stylesMenu.otherContainerBottom}>
+            <BotonNavegacion
+              navigation={navigation}
+              navigateTo={"SignUp"}
+              text={"SignUp"}
+            />
+            <BotonNavegacion
+              navigation={navigation}
+              navigateTo={"Login"}
+              text={"Login"}
+            />
+          </View>
+        </View>
+      )}
+    </View>
   );
 };
 
