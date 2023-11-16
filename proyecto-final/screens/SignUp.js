@@ -73,13 +73,13 @@ const SignUp = ({ navigation }) => {
 
       await setUsuarioId(userC.uid);
       let usuarioActual = {
-        dni: state.dni,
-        nombre: state.nombre,
-        apellido: state.apellido,
-        fechaNac: state.fechaNac,
-        direccion: state.direccion,
+        dni: dni,
+        nombre: nombre,
+        apellido: apellido,
+        fechaNac: fechaNac,
+        direccion: direccion,
         usuario_id: userC.uid,
-        voto: state.voto,
+        voto: voto,
       };
       // ;
       await setState({
