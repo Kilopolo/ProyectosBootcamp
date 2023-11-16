@@ -6,8 +6,9 @@ import {
   ScrollView,
   TextInput,
   StyleSheet,
+  Button,
 } from "react-native";
-import { Button } from "react-native-paper";
+// import { Button } from "react-native-paper";
 import PartidosLists from "./PartidosList";
 import FetchPartidos from "../functions/FetchPartidos";
 // Importa la función UpdateVotos
@@ -36,14 +37,12 @@ const VoteScreen = () => {
     }
   };
 
-  const updateVoto = async () => {
+  const updateVoto = async (partyId, nuevosVotos) => {
     if (listaPartidos === "") {
       alert("Debes seleccionar un partido");
       return;
     }
     // Llama a la función con el ID del partido y la cantidad de votos nuevos
-    const partyId = "ID_DEL_PARTIDO";
-    const nuevosVotos = 10;
 
     UpdateVotos(partyId, nuevosVotos)
       .then(() => {
@@ -71,27 +70,42 @@ const VoteScreen = () => {
         // setLoading(false)
       });
   };
+  // Función para incrementar los votos del partido
+  const incrementarVotos = () => {
+    const updatedPartido = {
+      ...partido,
+      votos: partido.votos + 1, // Incrementa el valor de votos en 1
+    };
+    setPartido(updatedPartido); // Actualiza el estado con el partido actualizado
+  };
 
   const doVote = async () => {
     if (listaPartidos === "") {
       alert("Debes seleccionar un partido");
       return;
     }
-  };
-  const handleVote = (n) => {
-    console.log(`Votaste por el partido con ID: ${n}`);
-    setPartido(n);
     //cojemos a quien vamos a votar
 
     //actualizamos los votos de ese partido
 
     //actualizamos el estado de voto del usuario
-
+    const partyId = partido.id;
+    const nuevosVotos = partido.votos + 1;
+    incrementarVotos(); //lo seteo para que la proxima quede bien
+    console.log("partido: " + partido);
+    console.log("votos: " + nuevosVotos);
+    updateVoto(partyId, nuevosVotos);
     //recuperamos los datos del usuario
 
     //recuperamos los datos de los partidos
 
     //actualizamos todo en la vista si hace falta
+  };
+  const handleVote = (partido) => {
+    //TODO poner a quien vamos a votar
+
+    console.log(`Votaste por el partido con ID: ${partido.id}`);
+    setPartido(partido);
   };
 
   const handlePressIn = (color) => {
@@ -105,9 +119,9 @@ const VoteScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {listaPartidos.map((listaPartidos, index) => (
+        {listaPartidos.map((p, index) => (
           <TouchableOpacity
-            key={listaPartidos.id}
+            key={p.id}
             // style={[
             //   styles.partidoButton,
             //   {
@@ -116,11 +130,11 @@ const VoteScreen = () => {
             //     marginBottom: index !== partidosDisponibles.length - 1 ? 10 : 0,
             //   },
             // ]}
-            onPress={() => handleVote(listaPartidos.nombre)}
+            onPress={() => handleVote(p)}
             // onPressIn={() => handlePressIn(partido.color)}
             onPressOut={handlePressOut}
           >
-            <Text>{listaPartidos.nombre}</Text>
+            <Text>{p.nombre}</Text>
           </TouchableOpacity>
         ))}
         <View style={styles.textAreaContainer}>
@@ -128,9 +142,10 @@ const VoteScreen = () => {
             placeholder="Comentarios adicionales (opcional)"
             multiline
             style={styles.textArea}
-            value={listaPartidos}
+            value={partido.nombre}
           />
-          <Button onPress={doVote} />
+          <Text>{partido.votos}</Text>
+          <Button title="Confirma" onPress={doVote} />
         </View>
       </ScrollView>
     </View>
