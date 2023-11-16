@@ -13,11 +13,18 @@ import PartidosLists from "./PartidosList";
 import FetchPartidos from "../functions/FetchPartidos";
 // Importa la función UpdateVotos
 import UpdateVotos from "../functions/UpdateVotos";
+import { getAuth } from "firebase/auth";
+// Importa la función UpdateVotoUsuario
+import UpdateVotoUsuario from "../functions/UpdateVotoUsuario";
+// Importa la función FetchCitizenById
+import FetchCitizenById from "../functions/FetchCitizenById";
 
 const VoteScreen = () => {
   const [partido, setPartido] = useState("");
   const [pressedButton, setPressedButton] = useState(null);
   const [listaPartidos, setListaPartidos] = useState([]);
+  const [user, setUser] = useState(null);
+
   const partidosDisponibles = [
     // { id: 1, nombre: 'PSOE', color: '#FC0303' }, // Color rosa suave
     // { id: 2, nombre: 'Partido Popular', color: '#00DFF9' }, // Color azul claro
@@ -27,14 +34,37 @@ const VoteScreen = () => {
 
   useEffect(() => {
     fetchPartido();
-    console.log("Partidos disponibles:", listaPartidos);
-  }, []);
+    // console.log("Partidos disponibles:", listaPartidos);
 
-  const updateUsuario = async () => {
-    if (listaPartidos === "") {
-      alert("Debes seleccionar un partido");
-      return;
-    }
+    setUser(getAuth().currentUser);
+  }, [partido.votos]);
+
+  const updateUsuario = async (userId, haVotado) => {
+    // Llama a la función con el ID del usuarioe
+    UpdateVotoUsuario(userId, haVotado)
+      .then(() => {
+        console.log("Estado de voto actualizado exitosamente");
+      })
+      .catch((error) => {
+        console.error("Error al actualizar estado de voto:", error);
+      });
+  };
+
+  const fetchCitizenByUserUID = async (userId) => {
+    // Llama a la función con el ID del ciudadano
+
+
+    FetchCitizenById(userId)
+      .then((citizenData) => {
+        if (citizenData) {
+          console.log("Datos del ciudadano:", citizenData);
+        } else {
+          console.log("No se encontró al ciudadano con el ID proporcionado");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos del ciudadano:", error);
+      });
   };
 
   const updateVoto = async (partyId, nuevosVotos) => {
@@ -85,20 +115,23 @@ const VoteScreen = () => {
       return;
     }
     //cojemos a quien vamos a votar
+    const partyId = partido.id;
 
     //actualizamos los votos de ese partido
-
-    //actualizamos el estado de voto del usuario
-    const partyId = partido.id;
     const nuevosVotos = partido.votos + 1;
     incrementarVotos(); //lo seteo para que la proxima quede bien
     console.log("partido: " + partido);
     console.log("votos: " + nuevosVotos);
     updateVoto(partyId, nuevosVotos);
+
     //recuperamos los datos del usuario
 
-    //recuperamos los datos de los partidos
+    //actualizamos el estado de voto del usuario
+    await updateUsuario(user, true);
 
+    //recuperamos los datos de los partidos
+    const tmp = await fetchCitizenByUserUID(user.uid);
+    console.log("ciudadano",tmp);
     //actualizamos todo en la vista si hace falta
   };
   const colores = ['#0000FF', '#008000', '#800080', '#FF0000'];
@@ -108,7 +141,6 @@ const VoteScreen = () => {
     console.log(`Votaste por el partido con ID: ${partido.id}`);
     setPartido(partido);
     // setPartido(partido.nombre); // Actualiza el estado 'partido' con el nombre
-           
   };
 
   const handlePressIn = (color) => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ImageBackground, FlatList, Button } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { getAuth } from "firebase/auth";
 import { firestore } from "../database/firebase";
 import { collection, where, query, getDocs } from "@firebase/firestore";
@@ -107,7 +107,17 @@ const LandingPage = ({ navigation }) => {
         )}
       </Text>
       {!hasVoted && (
-        <Button title="Votar" onPress={handleVoteButton} />
+         <View>
+         <TouchableOpacity
+           style={styles.button}
+           title="Iniciar Sesión"
+           onPress={handleVoteButton}
+         >
+           <Text style={styles.buttonText}>
+           Votar
+           </Text>
+         </TouchableOpacity>
+       </View>
       )}
     </View>
   );

@@ -38,6 +38,23 @@ export default StyleSheet.create({
       fontSize: 20,
       marginBottom: 10,
     },
+    button: {
+      alignItems: "center",
+      justifyContent: "center",
+      borderWidth: 1,
+      borderColor: "#A59E8C",
+      backgroundColor: "#DCC48E",
+      borderRadius: 5,
+      padding: 10,
+      margin:10
+    },
+    buttonText: {
+      fontSize: 20,
+      textAlign: "center",
+      color: "#FFFCF7",
+      fontWeight: "bold",
+      
+    },
   });
   // const styles = StyleSheet.create({
   //   background: {
