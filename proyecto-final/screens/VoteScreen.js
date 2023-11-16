@@ -24,6 +24,7 @@ const VoteScreen = () => {
   const [pressedButton, setPressedButton] = useState(null);
   const [listaPartidos, setListaPartidos] = useState([]);
   const [user, setUser] = useState(null);
+  const [votado, setVotado] = useState(false);
 
   const partidosDisponibles = [
     // { id: 1, nombre: 'PSOE', color: '#FC0303' }, // Color rosa suave
@@ -37,6 +38,12 @@ const VoteScreen = () => {
     // console.log("Partidos disponibles:", listaPartidos);
 
     setUser(getAuth().currentUser);
+
+
+    // const tmp = fetchCitizenByUserUID(getAuth().currentUser.uid);
+    // console.log("ciudadano",tmp);
+
+
   }, [partido.votos]);
 
   const updateUsuario = async (userId, haVotado) => {
@@ -127,7 +134,8 @@ const VoteScreen = () => {
     //recuperamos los datos del usuario
 
     //actualizamos el estado de voto del usuario
-    await updateUsuario(user, true);
+    await updateUsuario(user.uid, true);
+    setVotado(true);
 
     //recuperamos los datos de los partidos
     const tmp = await fetchCitizenByUserUID(user.uid);
@@ -184,8 +192,10 @@ const VoteScreen = () => {
             value={partido.nombre}
           />
           <Text>{partido.votos}</Text>
-
-          <Button onPress={doVote}>Confirmar Voto</Button>
+            {votado? null : (
+              <Button onPress={doVote}>Confirmar Voto</Button>
+            )}
+          
         </View>
       </ScrollView>
     </View>

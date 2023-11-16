@@ -1,19 +1,10 @@
 import { firestore } from "../database/firebase";
-import { doc, updateDoc, collection, query, where, getDoc } from "@firebase/firestore";
+import { doc, updateDoc, collection, query, where, getDocs } from "firebase/firestore";
 
 const UpdateVotoUsuario = async (userId,haVotado) => {
   try {
-    // // const userRef = doc(collection(firestore, "usuarios"), userId);
-    // // const userSnapshot = await getDoc(userRef);
-    // const querySnapshot = await getDoc(
-    //     query(collection(firestore, "citizens"), where("usuario_id", "==", userId))
-    //   );
 
-    // if (querySnapshot.exists()) {
-    //   // Actualiza el campo 'voto' a true para el usuario específico
-    //   await updateDoc(userRef, { voto: haVotado });
-
-    //   console.log(`Estado de voto actualizado para el usuario con ID ${userId}`);
+    console.log("UpdateVotoUsuario: ", userId);
 
     const q = query(collection(firestore, "citizens"), where("usuario_id", "==", userId));
     const querySnapshot = await getDocs(q);
