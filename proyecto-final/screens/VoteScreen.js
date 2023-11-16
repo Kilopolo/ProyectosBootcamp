@@ -28,7 +28,7 @@ const VoteScreen = () => {
   useEffect(() => {
     fetchPartido();
     console.log("Partidos disponibles:", listaPartidos);
-  }, []);
+  }, [partido.votos]);
 
   const updateUsuario = async () => {
     if (listaPartidos === "") {
@@ -100,6 +100,7 @@ const VoteScreen = () => {
     //recuperamos los datos de los partidos
 
     //actualizamos todo en la vista si hace falta
+
   };
   const handleVote = (partido) => {
     //TODO poner a quien vamos a votar
