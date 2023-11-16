@@ -3,6 +3,8 @@ import {
   ScrollView,
   View,
   Text,
+  StyleSheet,
+  Image,
   ImageBackground,
 } from "react-native";
 import stylesMenu from "../styles/StyleMenuScreen";
@@ -83,7 +85,14 @@ const MenuScreen = ({ navigation }) => {
     
       <View style={stylesMenu.allMenuContainer}>
         <View style={stylesMenu.someContainer}>
-          {isLoading ? null : (
+          {isLoading ? (
+           <View style={styles.loadingContainer}>
+           <Image
+             source={require('../assets/loading.gif')} // Ruta de tu archivo loading.gif
+             style={styles.loadingGif}
+           />
+         </View>
+          ): (
             <View style={stylesMenu.someContainerBottom}>
               <ScrollView>
                <View >
@@ -135,7 +144,21 @@ const MenuScreen = ({ navigation }) => {
         )}
       </View>
    
+   
   );
+
+  
 };
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingGif: {
+    width: 200, // Ancho del GIF
+    height: 200, // Alto del GIF
+  },
+});
 
 export default MenuScreen;
