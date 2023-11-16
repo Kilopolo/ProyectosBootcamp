@@ -11,7 +11,7 @@ const FetchPartidos = () => {
         partyData.push({ id: doc.id, ...doc.data() });
       });
 
-      console.log("AIDIOMIO", partyData);
+      // console.log("AIDIOMIO", partyData);
       resolve(partyData); // Resuelve la promesa con los datos obtenidos
     } catch (error) {
       console.error("Error fetching data:", error);

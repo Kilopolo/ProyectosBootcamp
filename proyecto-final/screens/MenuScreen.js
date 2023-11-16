@@ -35,7 +35,7 @@ const MenuScreen = ({ navigation }) => {
   const fetchPartido = async () => {
     FetchPartidos()
       .then((partyData) => {
-        console.log("Datos obtenidos:", partyData);
+        // console.log("Datos obtenidos:", partyData);
         setListaPartidos(partyData);
       })
       .catch((error) => {
