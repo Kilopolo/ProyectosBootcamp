@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 const stylesMenu = StyleSheet.create({
 
+  container:{
+    backgroundColor:"#D5DDBC",
+  },
   buttonContainer: {
     flex: 1,
     alignItems: "center",

@@ -7,12 +7,12 @@ import {
 } from "react-native";
 import stylesMenu from "../styles/StyleMenuScreen";
 import { getAuth } from "firebase/auth";
-import PartidosLists from "./PartidosList";
 import { collection, getDocs } from "@firebase/firestore";
 import { firestore } from "../database/firebase";
 import BotonNavegacion from "../components/BotonNavegacion";
 import LoremIpsumComponent from "./LoremIpsumComponent";
 import FetchPartidos from "../functions/FetchPartidos";
+import { BarChart } from "react-native-chart-kit";
 
 const MenuScreen = ({ navigation }) => {
 
@@ -30,66 +30,76 @@ const MenuScreen = ({ navigation }) => {
     }
   }, []);
 
-
-
-  // const fetchPartido = async () => {
-  //   try {
-  //     const querySnapshot = await getDocs(collection(firestore, "parties"));
-  //     const partyData = [];
-
-  //     querySnapshot.forEach((doc) => {
-  //       partyData.push({ id: doc.id, ...doc.data() });
-  //     });
-
-  //     await setListaPartidos(partyData);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-  
   const fetchPartido = async () => {
-    // Llamada a la función FetchPartidos
     FetchPartidos()
       .then((partyData) => {
-        // Manejo de los datos obtenidos
         console.log("Datos obtenidos:", partyData);
-        // Realiza aquí las operaciones con los datos obtenidos
         setListaPartidos(partyData);
       })
       .catch((error) => {
-        // Manejo de errores
         console.error("Error:", error);
       })
       .finally(() => {
-        // setLoading(false)
+        setLoading(false);
       });
   };
 
+  // Función para renderizar el gráfico de barras
+  const renderBarChart = () => {
+    const labels = listaPartidos.map((partido) => partido.nombre);
+    const data = listaPartidos.map((partido) => partido.votos);
+
+    const chartConfig = {
+      backgroundColor: "#3498db",
+      backgroundGradientFrom: "white",
+      backgroundGradientTo: "white",
+      decimalPlaces: 0,
+      color: (opacity = 1) => `rgba(52, 152, 219, ${opacity})`,
+      style: {
+        borderRadius: 16,
+      },
+    };
+
+    return (
+      <BarChart
+        data={{
+          labels: labels,
+          datasets: [
+            {
+              data: data,
+            },
+          ],
+        }}
+        width={300}
+        height={200}
+        chartConfig={chartConfig}
+        fromZero={true}
+        showValuesOnTopOfBars={true}
+        style={stylesMenu.otherContainer}     />
+    );
+  };
 
   return (
-    <ImageBackground
-      source={require("../assets/BKG.png")} // Reemplaza 'tu_imagen_de_fondo.jpg' con la ruta de tu imagen
-      style={stylesMenu.allMenuContainer}
-    >
+    
       <View style={stylesMenu.allMenuContainer}>
         <View style={stylesMenu.someContainer}>
           {isLoading ? null : (
             <View style={stylesMenu.someContainerBottom}>
               <ScrollView>
-                <PartidosLists listaPartidos={{ listaPartidos }} />
+               <View >
+                {renderBarChart()}
+                </View>
                 <View style={stylesMenu.someContainerBottomButton}>
                   <BotonNavegacion
                     navigation={navigation}
                     navigateTo={"VoteScreen"}
                     text={"VOTAR"}
                   />
-                              <BotonNavegacion
-              navigation={navigation}
-              navigateTo={"LandingPage"}
-              text={"HOME"}
-            />
+                  <BotonNavegacion
+                    navigation={navigation}
+                    navigateTo={"LandingPage"}
+                    text={"HOME"}
+                  />
                 </View>
                 <LoremIpsumComponent />
               </ScrollView>
@@ -124,7 +134,7 @@ const MenuScreen = ({ navigation }) => {
           </View>
         )}
       </View>
-    </ImageBackground>
+   
   );
 };
 
