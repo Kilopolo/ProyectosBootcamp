@@ -8,7 +8,7 @@ const PartidosLists = ({ listaPartidos }) => {
 
   useEffect(() => {
     awaitData();
-  }, []);
+  }, [listaPartidos]);
 
   async function awaitData() {
     await setData(listaPartidos.listaPartidos); // Utiliza directamente el prop listaPartidos

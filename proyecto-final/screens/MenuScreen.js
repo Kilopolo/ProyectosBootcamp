@@ -30,7 +30,7 @@ const MenuScreen = ({ navigation }) => {
     } else {
       setAuhtenticated(true);
     }
-  }, []);
+  }, [listaPartidos]);
 
   const fetchPartido = async () => {
     FetchPartidos()
