@@ -10,6 +10,8 @@ import {
 import { Button } from "react-native-paper";
 import PartidosLists from "./PartidosList";
 import FetchPartidos from "../functions/FetchPartidos";
+// Importa la función UpdateVotos
+import UpdateVotos from "../functions/UpdateVotos";
 
 const VoteScreen = () => {
   const [partido, setPartido] = useState("");
@@ -26,6 +28,31 @@ const VoteScreen = () => {
     fetchPartido();
     console.log("Partidos disponibles:", listaPartidos);
   }, []);
+
+  const updateUsuario = async () => {
+    if (listaPartidos === "") {
+      alert("Debes seleccionar un partido");
+      return;
+    }
+  };
+
+  const updateVoto = async () => {
+    if (listaPartidos === "") {
+      alert("Debes seleccionar un partido");
+      return;
+    }
+    // Llama a la función con el ID del partido y la cantidad de votos nuevos
+    const partyId = "ID_DEL_PARTIDO";
+    const nuevosVotos = 10;
+
+    UpdateVotos(partyId, nuevosVotos)
+      .then(() => {
+        console.log("Votos actualizados exitosamente");
+      })
+      .catch((error) => {
+        console.error("Error al actualizar votos:", error);
+      });
+  };
 
   const fetchPartido = async () => {
     // Llamada a la función FetchPartidos
@@ -54,6 +81,17 @@ const VoteScreen = () => {
   const handleVote = (n) => {
     console.log(`Votaste por el partido con ID: ${n}`);
     setPartido(n);
+    //cojemos a quien vamos a votar
+
+    //actualizamos los votos de ese partido
+
+    //actualizamos el estado de voto del usuario
+
+    //recuperamos los datos del usuario
+
+    //recuperamos los datos de los partidos
+
+    //actualizamos todo en la vista si hace falta
   };
 
   const handlePressIn = (color) => {
