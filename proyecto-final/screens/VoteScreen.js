@@ -13,11 +13,19 @@ import PartidosLists from "./PartidosList";
 import FetchPartidos from "../functions/FetchPartidos";
 // Importa la función UpdateVotos
 import UpdateVotos from "../functions/UpdateVotos";
+import { getAuth } from "firebase/auth";
+// Importa la función UpdateVotoUsuario
+import UpdateVotoUsuario from "../functions/UpdateVotoUsuario";
+// Importa la función FetchCitizenById
+import FetchCitizenById from "../functions/FetchCitizenById";
 
-const VoteScreen = () => {
+const VoteScreen = ({}) => {
   const [partido, setPartido] = useState("");
   const [pressedButton, setPressedButton] = useState(null);
   const [listaPartidos, setListaPartidos] = useState([]);
+  const [user, setUser] = useState(null);
+  const [votado, setVotado] = useState(false);
+
   const partidosDisponibles = [
     // { id: 1, nombre: 'PSOE', color: '#FC0303' }, // Color rosa suave
     // { id: 2, nombre: 'Partido Popular', color: '#00DFF9' }, // Color azul claro
@@ -27,14 +35,42 @@ const VoteScreen = () => {
 
   useEffect(() => {
     fetchPartido();
-    console.log("Partidos disponibles:", listaPartidos);
+    // console.log("Partidos disponibles:", listaPartidos);
+
+    setUser(getAuth().currentUser);
+
+
+
+
+
   }, [partido.votos]);
 
-  const updateUsuario = async () => {
-    if (listaPartidos === "") {
-      alert("Debes seleccionar un partido");
-      return;
-    }
+  const updateUsuario = async (userId, haVotado) => {
+    // Llama a la función con el ID del usuarioe
+    UpdateVotoUsuario(userId, haVotado)
+      .then(() => {
+        console.log("Estado de voto actualizado exitosamente");
+      })
+      .catch((error) => {
+        console.error("Error al actualizar estado de voto:", error);
+      });
+  };
+
+  const fetchCitizenByUserUID = async (userId) => {
+    // Llama a la función con el ID del ciudadano
+
+
+    FetchCitizenById(userId)
+      .then((citizenData) => {
+        if (citizenData) {
+          console.log("Datos del ciudadano:", citizenData);
+        } else {
+          console.log("No se encontró al ciudadano con el ID proporcionado");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos del ciudadano:", error);
+      });
   };
 
   const updateVoto = async (partyId, nuevosVotos) => {
@@ -85,30 +121,33 @@ const VoteScreen = () => {
       return;
     }
     //cojemos a quien vamos a votar
+    const partyId = partido.id;
 
     //actualizamos los votos de ese partido
-
-    //actualizamos el estado de voto del usuario
-    const partyId = partido.id;
     const nuevosVotos = partido.votos + 1;
     incrementarVotos(); //lo seteo para que la proxima quede bien
     console.log("partido: " + partido);
     console.log("votos: " + nuevosVotos);
     updateVoto(partyId, nuevosVotos);
+
     //recuperamos los datos del usuario
 
+    //actualizamos el estado de voto del usuario
+    await updateUsuario(user.uid, true);
+    setVotado(true);
+
     //recuperamos los datos de los partidos
-
+    // const tmp = await fetchCitizenByUserUID(user.uid);
+    // console.log("ciudadano",tmp);
     //actualizamos todo en la vista si hace falta
-
   };
+  const colores = ['#0000FF', '#008000', '#800080', '#FF0000'];
   const handleVote = (partido) => {
     //TODO poner a quien vamos a votar
 
     console.log(`Votaste por el partido con ID: ${partido.id}`);
     setPartido(partido);
     // setPartido(partido.nombre); // Actualiza el estado 'partido' con el nombre
-           
   };
 
   const handlePressIn = (color) => {
@@ -129,15 +168,14 @@ const VoteScreen = () => {
               styles.partidoButton,
               {
                 backgroundColor:
-                  pressedButton === partido.color ? partido.color : "#EAEAEA",
+                  pressedButton === partido.color ? partido.color : colores[index % colores.length],
                 transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
-                marginBottom:
-                  index !== listaPartidos.length - 1 ? 10 : 0,
+                marginBottom: index !== listaPartidos.length - 1 ? 10 : 0,
               },
             ]}
             onPress={() => {
-              handleVote(partido); // Cambiado a partido.id en lugar de partido.nombre
-              }}
+              handleVote(partido);
+            }}
             onPressIn={() => handlePressIn(partido.color)}
             onPressOut={handlePressOut}
           >
@@ -149,14 +187,13 @@ const VoteScreen = () => {
             placeholder={`Comentarios adicionales (Votaste por: ${partido})`}
             multiline
             style={styles.textArea}
-
             value={partido.nombre}
           />
-          <Text>{partido.votos}</Text>
-
-
-          <Button onPress={doVote} >Confirmar Voto</Button>
-
+          {/* <Text>{partido.votos}</Text> */}
+            {votado? null : (
+              <Button onPress={doVote}>Confirmar Voto</Button>
+            )}
+          
         </View>
       </ScrollView>
     </View>
