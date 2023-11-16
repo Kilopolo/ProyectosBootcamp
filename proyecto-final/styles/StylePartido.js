@@ -3,10 +3,10 @@ const stylesParty = StyleSheet.create({
 
 container:{
   flex: 1,
-  backgroundColor: "white",
-  borderWidth: 1,
+ borderBlockColor: 'grey',
+ borderWidth :1,
+ borderStyle:"dotted",
   marginBottom:15,
-  backgroundColor:"#505168",
   borderRadius: 5,
   padding:5,
 
@@ -27,20 +27,20 @@ textPartido:{
 },
 titulo:{
   fontSize: 18,
-  color: "white",
+  color: "#505168",
   textAlign: "center",
   textTransform: "uppercase",
   fontWeight:"bold",
   marginBottom: 10,
 },
 todoAfuera:{
-  // flex: 1,
   margin: 10,
   padding: 10,
-  borderWidth: 1,
+  borderWidth :1,
+ borderStyle:"dotted",
   borderRadius: 10,
-  borderColor: 'black',
-  backgroundColor: 'rgba(255,255,255,0.1)',
+  borderColor: 'grey',
+  
 },
 });
 
