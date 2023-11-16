@@ -15,7 +15,9 @@ import FetchPartidos from "../functions/FetchPartidos";
 import UpdateVotos from "../functions/UpdateVotos";
 import { getAuth } from "firebase/auth";
 // Importa la función UpdateVotoUsuario
-import UpdateVotoUsuario from '../functions/UpdateVotoUsuario';
+import UpdateVotoUsuario from "../functions/UpdateVotoUsuario";
+// Importa la función FetchCitizenById
+import FetchCitizenById from "../functions/FetchCitizenById";
 
 const VoteScreen = () => {
   const [partido, setPartido] = useState("");
@@ -33,21 +35,36 @@ const VoteScreen = () => {
   useEffect(() => {
     fetchPartido();
     // console.log("Partidos disponibles:", listaPartidos);
-    
+
     setUser(getAuth().currentUser);
   }, [partido.votos]);
 
-  const updateUsuario = async (userId) => {
+  const updateUsuario = async (userId, haVotado) => {
+    // Llama a la función con el ID del usuarioe
+    UpdateVotoUsuario(userId, haVotado)
+      .then(() => {
+        console.log("Estado de voto actualizado exitosamente");
+      })
+      .catch((error) => {
+        console.error("Error al actualizar estado de voto:", error);
+      });
+  };
 
-// Llama a la función con el ID del usuarioe
-UpdateVotoUsuario(userId)
-  .then(() => {
-    console.log('Estado de voto actualizado exitosamente');
-  })
-  .catch((error) => {
-    console.error('Error al actualizar estado de voto:', error);
-  });
+  const fetchCitizenByUserUID = async (userId) => {
+    // Llama a la función con el ID del ciudadano
 
+
+    FetchCitizenById(userId)
+      .then((citizenData) => {
+        if (citizenData) {
+          console.log("Datos del ciudadano:", citizenData);
+        } else {
+          console.log("No se encontró al ciudadano con el ID proporcionado");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos del ciudadano:", error);
+      });
   };
 
   const updateVoto = async (partyId, nuevosVotos) => {
@@ -98,23 +115,24 @@ UpdateVotoUsuario(userId)
       return;
     }
     //cojemos a quien vamos a votar
-
+    const partyId = partido.id;
 
     //actualizamos los votos de ese partido
-
-    //actualizamos el estado de voto del usuario
-    const partyId = partido.id;
     const nuevosVotos = partido.votos + 1;
     incrementarVotos(); //lo seteo para que la proxima quede bien
     console.log("partido: " + partido);
     console.log("votos: " + nuevosVotos);
     updateVoto(partyId, nuevosVotos);
+
     //recuperamos los datos del usuario
 
+    //actualizamos el estado de voto del usuario
+    await updateUsuario(user, true);
+
     //recuperamos los datos de los partidos
-
+    const tmp = await fetchCitizenByUserUID(user.uid);
+    console.log("ciudadano",tmp);
     //actualizamos todo en la vista si hace falta
-
   };
   const handleVote = (partido) => {
     //TODO poner a quien vamos a votar
@@ -122,7 +140,6 @@ UpdateVotoUsuario(userId)
     console.log(`Votaste por el partido con ID: ${partido.id}`);
     setPartido(partido);
     // setPartido(partido.nombre); // Actualiza el estado 'partido' con el nombre
-           
   };
 
   const handlePressIn = (color) => {
@@ -144,14 +161,15 @@ UpdateVotoUsuario(userId)
               {
                 backgroundColor:
                   pressedButton === partido.color ? partido.color : "#EAEAEA",
-                transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
-                marginBottom:
-                  index !== listaPartidos.length - 1 ? 10 : 0,
+                transform: [
+                  { scale: pressedButton === partido.color ? 1.2 : 1 },
+                ],
+                marginBottom: index !== listaPartidos.length - 1 ? 10 : 0,
               },
             ]}
             onPress={() => {
               handleVote(partido); // Cambiado a partido.id en lugar de partido.nombre
-              }}
+            }}
             onPressIn={() => handlePressIn(partido.color)}
             onPressOut={handlePressOut}
           >
@@ -163,14 +181,11 @@ UpdateVotoUsuario(userId)
             placeholder={`Comentarios adicionales (Votaste por: ${partido})`}
             multiline
             style={styles.textArea}
-
             value={partido.nombre}
           />
           <Text>{partido.votos}</Text>
 
-
-          <Button onPress={doVote} >Confirmar Voto</Button>
-
+          <Button onPress={doVote}>Confirmar Voto</Button>
         </View>
       </ScrollView>
     </View>
