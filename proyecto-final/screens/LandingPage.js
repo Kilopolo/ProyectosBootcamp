@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import { getAuth } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { firestore } from "../database/firebase";
 import { collection, where, query, getDocs } from "@firebase/firestore";
 import styles from "../styles/StyleLandingPage";
@@ -26,7 +26,7 @@ const LandingPage = ({ navigation }) => {
             "DNI:": citizen.dni,
             "Dirección:": citizen.direccion,
             "Fecha nacimiento: ": citizen.fechaNac,
-            "¿Voto?:" : citizen.voto.toString(),
+            "¿Voto?:": citizen.voto.toString(),
           };
 
           setUserData(fetchedUserData);
@@ -59,7 +59,6 @@ const LandingPage = ({ navigation }) => {
 
         console.log("Datos del ciudadano:", ciudadano); // Agrega este registro de consola
 
-
         return ciudadano;
       } else {
         console.log("No hay ciudadano");
@@ -72,7 +71,17 @@ const LandingPage = ({ navigation }) => {
   };
 
   const handleVoteButton = () => {
-    navigation.navigate('VoteScreen');
+    navigation.navigate("VoteScreen");
+  };
+
+  const handleLogout = async () => {
+    try {
+      const auth = getAuth();
+      await signOut(auth);
+      navigation.navigate("Login");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error.message);
+    }
   };
 
   if (loading) {
@@ -84,8 +93,16 @@ const LandingPage = ({ navigation }) => {
     //   source={require("../assets/BKG.png")}
     // >
     <View style={styles.container}>
+       <TouchableOpacity onPress={handleLogout}>
+        <Text style={{fontWeight:"bold", fontSize:18, textDecorationLine:"underline"}}>Cerrar Sesión</Text>
+        
+      </TouchableOpacity>
       <Text style={styles.title}>
-        ¡Bienvenido, {getAuth().currentUser===null?"":getAuth().currentUser.email || "Usuario"}!
+        ¡Bienvenido,{" "}
+        {getAuth().currentUser === null
+          ? ""
+          : getAuth().currentUser.email || "Usuario"}
+        !
       </Text>
       <Text style={styles.subtitle}>Datos del Usuario:</Text>
       <FlatList
@@ -107,22 +124,19 @@ const LandingPage = ({ navigation }) => {
         )}
       </Text>
       {!hasVoted && (
-         <View>
-         <TouchableOpacity
-           style={styles.button}
-           title="Iniciar Sesión"
-           onPress={handleVoteButton}
-         >
-           <Text style={styles.buttonText}>
-           Votar
-           </Text>
-         </TouchableOpacity>
-       </View>
+        <View>
+          <TouchableOpacity
+            style={styles.button}
+            title="Iniciar Sesión"
+            onPress={handleVoteButton}
+          >
+            <Text style={styles.buttonText}>Votar</Text>
+          </TouchableOpacity>
+        </View>
       )}
+     
     </View>
   );
 };
-
-
 
 export default LandingPage;

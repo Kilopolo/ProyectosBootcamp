@@ -141,6 +141,7 @@ const VoteScreen = ({}) => {
     // console.log("ciudadano",tmp);
     //actualizamos todo en la vista si hace falta
   };
+  const colores = ['#0000FF', '#008000', '#800080', '#FF0000'];
   const handleVote = (partido) => {
     //TODO poner a quien vamos a votar
 
@@ -167,15 +168,13 @@ const VoteScreen = ({}) => {
               styles.partidoButton,
               {
                 backgroundColor:
-                  pressedButton === partido.color ? partido.color : "#EAEAEA",
-                transform: [
-                  { scale: pressedButton === partido.color ? 1.2 : 1 },
-                ],
+                  pressedButton === partido.color ? partido.color : colores[index % colores.length],
+                transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
                 marginBottom: index !== listaPartidos.length - 1 ? 10 : 0,
               },
             ]}
             onPress={() => {
-              handleVote(partido); // Cambiado a partido.id en lugar de partido.nombre
+              handleVote(partido);
             }}
             onPressIn={() => handlePressIn(partido.color)}
             onPressOut={handlePressOut}

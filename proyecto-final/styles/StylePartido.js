@@ -4,7 +4,8 @@ const stylesParty = StyleSheet.create({
 container:{
   flex: 1,
  borderBlockColor: 'grey',
- borderWidth :1,
+ borderTopWidth:1,
+ borderBottomWidth:1,
  borderStyle:"dotted",
   marginBottom:15,
   borderRadius: 5,
@@ -36,7 +37,8 @@ titulo:{
 todoAfuera:{
   margin: 10,
   padding: 10,
-  borderWidth :1,
+  borderTopWidth:1,
+ borderBottomWidth:1,
  borderStyle:"dotted",
   borderRadius: 10,
   borderColor: 'grey',
