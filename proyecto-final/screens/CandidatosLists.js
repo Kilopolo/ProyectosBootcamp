@@ -84,26 +84,34 @@ const CandidatosLists = ({ party_id }) => {
   return (
     <View style={{ flex: 1 }}>
       {isLoading ? (
-         <View style={stylesMenu.loadingContainer}>
-         <Image
-           source={require('../assets/loading.gif')} // Ruta de tu archivo loading.gif
-           style={stylesMenu.loadingGif}
-         />
-       </View>
+        <View style={stylesMenu.loadingContainer}>
+          <Image
+            source={require("../assets/loading.gif")} // Ruta de tu archivo loading.gif
+            style={stylesMenu.loadingGif}
+          />
+        </View>
       ) : (
-        <FlatList
-          data={data}
-          keyExtractor={({ id }) => id}
-          renderItem={({ item }) => {
-            // console.log("Rendering Candidato Item with data:", item);
-            return (
-              <View>
-                {/*<Text>{`Partido: ${item.partyName}`}</Text>*/}
-                <Text style={stylesParty.text}>{item.citizenName}</Text>
-              </View>
-            );
-          }}
-        />
+        <View>
+          {data.map((item, index) => (
+            <View>
+              {/*<Text>{`Partido: ${item.partyName}`}</Text>*/}
+              <Text style={stylesParty.text}>{item.citizenName}</Text>
+            </View>
+          ))}
+        </View>
+        // <FlatList
+        //   data={data}
+        //   keyExtractor={({ id }) => id}
+        //   renderItem={({ item }) => {
+        //     // console.log("Rendering Candidato Item with data:", item);
+        //     return (
+        //       <View>
+        //         {/*<Text>{`Partido: ${item.partyName}`}</Text>*/}
+        //         <Text style={stylesParty.text}>{item.citizenName}</Text>
+        //       </View>
+        //     );
+        //   }}
+        // />
       )}
     </View>
   );

@@ -137,8 +137,8 @@ const VoteScreen = ({}) => {
     setVotado(true);
 
     //recuperamos los datos de los partidos
-    const tmp = await fetchCitizenByUserUID(user.uid);
-    console.log("ciudadano",tmp);
+    // const tmp = await fetchCitizenByUserUID(user.uid);
+    // console.log("ciudadano",tmp);
     //actualizamos todo en la vista si hace falta
   };
   const handleVote = (partido) => {
@@ -190,7 +190,7 @@ const VoteScreen = ({}) => {
             style={styles.textArea}
             value={partido.nombre}
           />
-          <Text>{partido.votos}</Text>
+          {/* <Text>{partido.votos}</Text> */}
             {votado? null : (
               <Button onPress={doVote}>Confirmar Voto</Button>
             )}
