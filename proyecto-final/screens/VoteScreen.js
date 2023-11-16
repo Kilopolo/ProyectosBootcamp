@@ -67,32 +67,37 @@ const VoteScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {listaPartidos.map((listaPartidos, index) => (
+        {listaPartidos.map((partido, index) => (
           <TouchableOpacity
-            key={listaPartidos.id}
-            // style={[
-            //   styles.partidoButton,
-            //   {
-            //     backgroundColor: pressedButton === partido.color ? partido.color : '#EAEAEA',
-            //     transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
-            //     marginBottom: index !== partidosDisponibles.length - 1 ? 10 : 0,
-            //   },
-            // ]}
-            onPress={() => handleVote(listaPartidos.nombre)}
-            // onPressIn={() => handlePressIn(partido.color)}
+            key={partido.id}
+            style={[
+              styles.partidoButton,
+              {
+                backgroundColor:
+                  pressedButton === partido.color ? partido.color : "#EAEAEA",
+                transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
+                marginBottom:
+                  index !== listaPartidos.length - 1 ? 10 : 0,
+              },
+            ]}
+            onPress={() => {
+              handleVote(partido.id); // Cambiado a partido.id en lugar de partido.nombre
+              setPartido(partido.nombre); // Actualiza el estado 'partido' con el nombre
+            }}
+            onPressIn={() => handlePressIn(partido.color)}
             onPressOut={handlePressOut}
           >
-            <Text>{listaPartidos.nombre}</Text>
+            <Text>{partido.nombre}</Text>
           </TouchableOpacity>
         ))}
         <View style={styles.textAreaContainer}>
           <TextInput
-            placeholder="Comentarios adicionales (opcional)"
+            placeholder={`Comentarios adicionales (Votaste por: ${partido})`}
             multiline
             style={styles.textArea}
-            value={listaPartidos}
+            value={partido} // Mostrará el nombre del partido seleccionado
           />
-          <Button onPress={doVote} />
+          <Button onPress={doVote}>Confirmar Voto</Button>
         </View>
       </ScrollView>
     </View>
@@ -117,6 +122,9 @@ const styles = StyleSheet.create({
     borderColor: "transparent",
   },
   textAreaContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     height: 150,
     marginVertical: 10,
   },
