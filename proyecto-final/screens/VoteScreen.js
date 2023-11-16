@@ -13,11 +13,16 @@ import PartidosLists from "./PartidosList";
 import FetchPartidos from "../functions/FetchPartidos";
 // Importa la función UpdateVotos
 import UpdateVotos from "../functions/UpdateVotos";
+import { getAuth } from "firebase/auth";
+// Importa la función UpdateVotoUsuario
+import UpdateVotoUsuario from '../functions/UpdateVotoUsuario';
 
 const VoteScreen = () => {
   const [partido, setPartido] = useState("");
   const [pressedButton, setPressedButton] = useState(null);
   const [listaPartidos, setListaPartidos] = useState([]);
+  const [user, setUser] = useState(null);
+
   const partidosDisponibles = [
     // { id: 1, nombre: 'PSOE', color: '#FC0303' }, // Color rosa suave
     // { id: 2, nombre: 'Partido Popular', color: '#00DFF9' }, // Color azul claro
@@ -27,14 +32,22 @@ const VoteScreen = () => {
 
   useEffect(() => {
     fetchPartido();
-    console.log("Partidos disponibles:", listaPartidos);
+    // console.log("Partidos disponibles:", listaPartidos);
+    
+    setUser(getAuth().currentUser);
   }, [partido.votos]);
 
-  const updateUsuario = async () => {
-    if (listaPartidos === "") {
-      alert("Debes seleccionar un partido");
-      return;
-    }
+  const updateUsuario = async (userId) => {
+
+// Llama a la función con el ID del usuarioe
+UpdateVotoUsuario(userId)
+  .then(() => {
+    console.log('Estado de voto actualizado exitosamente');
+  })
+  .catch((error) => {
+    console.error('Error al actualizar estado de voto:', error);
+  });
+
   };
 
   const updateVoto = async (partyId, nuevosVotos) => {
@@ -85,6 +98,7 @@ const VoteScreen = () => {
       return;
     }
     //cojemos a quien vamos a votar
+
 
     //actualizamos los votos de ese partido
 
