@@ -19,7 +19,7 @@ import UpdateVotoUsuario from "../functions/UpdateVotoUsuario";
 // Importa la función FetchCitizenById
 import FetchCitizenById from "../functions/FetchCitizenById";
 
-const VoteScreen = () => {
+const VoteScreen = ({}) => {
   const [partido, setPartido] = useState("");
   const [pressedButton, setPressedButton] = useState(null);
   const [listaPartidos, setListaPartidos] = useState([]);
@@ -40,8 +40,7 @@ const VoteScreen = () => {
     setUser(getAuth().currentUser);
 
 
-    // const tmp = fetchCitizenByUserUID(getAuth().currentUser.uid);
-    // console.log("ciudadano",tmp);
+
 
 
   }, [partido.votos]);
