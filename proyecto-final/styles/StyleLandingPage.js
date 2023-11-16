@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     background: {
       flex: 1,
-      resizeMode: "cover", // O 'contain' según tus preferencias
       justifyContent: "center",
+      backgroundColor:"#505168",
     },
     container: {
       flex: 1,

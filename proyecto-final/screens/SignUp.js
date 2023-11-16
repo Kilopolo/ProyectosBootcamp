@@ -3,7 +3,7 @@ import {
   View,
   Text,
   TextInput,
-  Button,
+  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
@@ -12,6 +12,7 @@ import { firestore } from "../database/firebase";
 import { addDoc, collection } from "@firebase/firestore";
 import stylesSignUp from "../styles/StyleSignUp";
 import { ScrollView } from "react-native";
+import stylesMenu from "../styles/StyleMenuScreen";
 // import database from '@react-native-firebase/database';
 
 const SignUp = ({ navigation }) => {
@@ -43,7 +44,7 @@ const SignUp = ({ navigation }) => {
       try {
         await addDoc(ref, usuarioActual);
         console.log("Ciudadano creado correctamente");
-        console.log("Datos del usuario:",usuarioActual)
+        console.log("Datos del usuario:", usuarioActual);
         alert("Usuario guardado");
       } catch (err) {
         console.error(err);
@@ -193,8 +194,19 @@ const SignUp = ({ navigation }) => {
               setVoto(text === "true");
             }}
           />
-
-          <Button title="Crear Usuario" onPress={handleSignUp} />
+          <View>
+            <TouchableOpacity
+              style={stylesMenu.button}
+              title="Iniciar Sesión"
+              onPress={handleSignUp}
+            >
+              <Text
+                style={stylesMenu.buttonText}
+              >
+                Crear Usuario
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </KeyboardAvoidingView>
     </ScrollView>

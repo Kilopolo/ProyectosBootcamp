@@ -6,7 +6,7 @@ container:{
   backgroundColor: "white",
   borderWidth: 1,
   marginBottom:15,
-  borderColor:'grey',
+  backgroundColor:"#505168",
   borderRadius: 5,
   padding:5,
 

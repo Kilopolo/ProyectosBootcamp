@@ -50,13 +50,13 @@ const MenuScreen = ({ navigation }) => {
     const data = listaPartidos.map((partido) => partido.votos);
 
     const chartConfig = {
-      backgroundColor: "#3498db",
-      backgroundGradientFrom: "white",
+      backgroundColor: "white",
+      backgroundGradientFrom: "#F8FFDF",
       backgroundGradientTo: "white",
       decimalPlaces: 0,
-      color: (opacity = 1) => `rgba(52, 152, 219, ${opacity})`,
+      color: (opacity = 0) => ` rgba(000, 000, 000, ${opacity})`,
       style: {
-        borderRadius: 16,
+        borderRadius: 20,
       },
     };
 
@@ -75,7 +75,7 @@ const MenuScreen = ({ navigation }) => {
         chartConfig={chartConfig}
         fromZero={true}
         showValuesOnTopOfBars={true}
-        style={stylesMenu.otherContainer}     />
+        style={stylesMenu.graf}     />
     );
   };
 

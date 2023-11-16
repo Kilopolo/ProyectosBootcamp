@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
 const stylesMenu = StyleSheet.create({
+  allMenuContainer: {
+    flex: 1,
+    backgroundColor: "white",
 
-  container:{
-    backgroundColor:"#D5DDBC",
   },
   buttonContainer: {
     flex: 1,
@@ -60,7 +61,7 @@ const stylesMenu = StyleSheet.create({
     fontSize: 12,
     textAlign: "center",
     justifyContent: "center",
-    color: "#FFFFFF",
+    color: "white",
     fontWeight: "bold",
   },
   otherContainerBottom: {
@@ -70,9 +71,6 @@ const stylesMenu = StyleSheet.create({
   },
   someContainer: {
     flex: 10,
-    // flexWrap: "wrap",
-    // alignItems: "center",
-    // justifyContent: "center",
   },
 
   someContainerBottom : {
@@ -86,10 +84,6 @@ const stylesMenu = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  allMenuContainer: {
-    flex: 1,
-
-  },
     loadingContainer: {
       flex: 1,
       justifyContent: 'center',
@@ -99,6 +93,30 @@ const stylesMenu = StyleSheet.create({
       width:100,
       height:100,
     },
+    button: {
+      alignItems: "center",
+      justifyContent: "center",
+      borderWidth: 1,
+      borderColor: "#A59E8C",
+      backgroundColor: "#DCC48E",
+      borderRadius: 5,
+      padding: 10,
+      margin:10
+    },
+    buttonText: {
+      fontSize: 20,
+      textAlign: "center",
+      color: "#FFFCF7",
+      fontWeight: "bold",
+      
+    },
+    graf:{ 
+      padding: 5,
+      borderRadius:16,
+      alignItems: "center",
+      justifyContent: "center",
+      
+    }
 });
 
 export default stylesMenu;
