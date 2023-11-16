@@ -3,6 +3,8 @@ import {
   ScrollView,
   View,
   Text,
+  StyleSheet,
+  Image,
   ImageBackground,
 } from "react-native";
 import stylesMenu from "../styles/StyleMenuScreen";
@@ -50,13 +52,13 @@ const MenuScreen = ({ navigation }) => {
     const data = listaPartidos.map((partido) => partido.votos);
 
     const chartConfig = {
-      backgroundColor: "#3498db",
-      backgroundGradientFrom: "white",
+      backgroundColor: "white",
+      backgroundGradientFrom: "#F8FFDF",
       backgroundGradientTo: "white",
       decimalPlaces: 0,
-      color: (opacity = 1) => `rgba(52, 152, 219, ${opacity})`,
+      color: (opacity = 0) => ` rgba(000, 000, 000, ${opacity})`,
       style: {
-        borderRadius: 16,
+        borderRadius: 20,
       },
     };
 
@@ -75,7 +77,7 @@ const MenuScreen = ({ navigation }) => {
         chartConfig={chartConfig}
         fromZero={true}
         showValuesOnTopOfBars={true}
-        style={stylesMenu.otherContainer}     />
+        style={stylesMenu.graf}     />
     );
   };
 
@@ -83,7 +85,14 @@ const MenuScreen = ({ navigation }) => {
     
       <View style={stylesMenu.allMenuContainer}>
         <View style={stylesMenu.someContainer}>
-          {isLoading ? null : (
+          {isLoading ? (
+           <View style={styles.loadingContainer}>
+           <Image
+             source={require('../assets/loading.gif')} // Ruta de tu archivo loading.gif
+             style={styles.loadingGif}
+           />
+         </View>
+          ): (
             <View style={stylesMenu.someContainerBottom}>
               <ScrollView>
                <View >
@@ -135,7 +144,21 @@ const MenuScreen = ({ navigation }) => {
         )}
       </View>
    
+   
   );
+
+  
 };
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingGif: {
+    width: 200, // Ancho del GIF
+    height: 200, // Alto del GIF
+  },
+});
 
 export default MenuScreen;

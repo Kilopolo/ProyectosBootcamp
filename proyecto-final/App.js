@@ -23,7 +23,7 @@ function MyStack() {
     <Stack.Navigator
       // initialRouteName=""
       screenOptions={{
-        headerStyle: { backgroundColor: "#3498db" },
+        headerStyle: { backgroundColor: "#27233A" },
         headerTintColor: "#fff",
         headerTitleStyle: { fontWeight: "bold" },
         headerTitleAlign: "center",

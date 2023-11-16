@@ -6,9 +6,9 @@ import {
   ScrollView,
   TextInput,
   StyleSheet,
-  Button,
+  // Button,
 } from "react-native";
-// import { Button } from "react-native-paper";
+import { Button } from "react-native-paper";
 import PartidosLists from "./PartidosList";
 import FetchPartidos from "../functions/FetchPartidos";
 // Importa la función UpdateVotos
@@ -106,6 +106,8 @@ const VoteScreen = () => {
 
     console.log(`Votaste por el partido con ID: ${partido.id}`);
     setPartido(partido);
+    // setPartido(partido.nombre); // Actualiza el estado 'partido' con el nombre
+           
   };
 
   const handlePressIn = (color) => {
@@ -119,33 +121,41 @@ const VoteScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {listaPartidos.map((p, index) => (
+        {listaPartidos.map((partido, index) => (
           <TouchableOpacity
-            key={p.id}
-            // style={[
-            //   styles.partidoButton,
-            //   {
-            //     backgroundColor: pressedButton === partido.color ? partido.color : '#EAEAEA',
-            //     transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
-            //     marginBottom: index !== partidosDisponibles.length - 1 ? 10 : 0,
-            //   },
-            // ]}
-            onPress={() => handleVote(p)}
-            // onPressIn={() => handlePressIn(partido.color)}
+            key={partido.id}
+            style={[
+              styles.partidoButton,
+              {
+                backgroundColor:
+                  pressedButton === partido.color ? partido.color : "#EAEAEA",
+                transform: [{ scale: pressedButton === partido.color ? 1.2 : 1 }],
+                marginBottom:
+                  index !== listaPartidos.length - 1 ? 10 : 0,
+              },
+            ]}
+            onPress={() => {
+              handleVote(partido); // Cambiado a partido.id en lugar de partido.nombre
+              }}
+            onPressIn={() => handlePressIn(partido.color)}
             onPressOut={handlePressOut}
           >
-            <Text>{p.nombre}</Text>
+            <Text>{partido.nombre}</Text>
           </TouchableOpacity>
         ))}
         <View style={styles.textAreaContainer}>
           <TextInput
-            placeholder="Comentarios adicionales (opcional)"
+            placeholder={`Comentarios adicionales (Votaste por: ${partido})`}
             multiline
             style={styles.textArea}
+
             value={partido.nombre}
           />
           <Text>{partido.votos}</Text>
-          <Button title="Confirma" onPress={doVote} />
+
+
+          <Button onPress={doVote} >Confirmar Voto</Button>
+
         </View>
       </ScrollView>
     </View>
@@ -170,6 +180,9 @@ const styles = StyleSheet.create({
     borderColor: "transparent",
   },
   textAreaContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     height: 150,
     marginVertical: 10,
   },

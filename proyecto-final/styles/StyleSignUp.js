@@ -6,6 +6,7 @@ const stylesUser = StyleSheet.create({
         padding:5,
         justifyContent: "center",
         alignItems: "center",
+        
     },
     label :{
         color: '#333333',
