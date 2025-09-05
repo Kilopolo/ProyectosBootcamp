@@ -31,17 +31,17 @@ const GameScreen = () => {
   const obtenerFigura = (mensaje) => {
     let imagen = "";
     if (mensaje === "Piedra") {
-      imagen = require("../assets/rock.png");
+      imagen = require("../../assets/rock.png");
     } else if (mensaje === "Lagarto") {
-      imagen = require("../assets/lizard.png");
+      imagen = require("../../assets/lizard.png");
     } else if (mensaje === "Spock") {
-      imagen = require("../assets/spock.png");
+      imagen = require("../../assets/spock.png");
     } else if (mensaje === "Papel") {
-      imagen = require("../assets/papel.png");
+      imagen = require("../../assets/papel.png");
     } else if (mensaje === "Tijeras") {
-      imagen = require("../assets/tijera.png");
+      imagen = require("../../assets/tijera.png");
     } else if (mensaje === "vs") {
-      imagen = require("../assets/vs.png");
+      imagen = require("../../assets/vs.png");
     }
     return imagen;
   };
@@ -88,7 +88,7 @@ const GameScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <ImageBackground
-        source={require("../assets/fondo.jpg")}
+        source={require("../../assets/fondo.jpg")}
         style={styles.fondoStyle}
       >
         <View style={styles.blurContainer}>

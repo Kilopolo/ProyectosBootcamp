@@ -45,7 +45,7 @@ const IMCPatri = () => {
 
   return (
     <ImageBackground
-      source={require("../assets/fondoimcpatri.jpg")}
+      source={require("../../assets/fondoimcpatri.jpg")}
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
